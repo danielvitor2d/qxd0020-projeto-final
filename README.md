@@ -16,6 +16,12 @@ Informe aqui os tipos de usuário que irão interagir com a aplicação. Ex: adm
 
 Liste as principais entidades do sistema.
 
+- users
+- quizzes
+- quizzes_answer
+- courses
+- [falta uma]
+
 ## :triangular_flag_on_post:	 Principais funcionalidades da aplicação
 
 Descreve ou liste brevemente as principais funcionalidades da aplicação que será desenvolvida. Destaque a funcionalidades que serão acessévies a todos os usuários e aquelas restriras a usuários logados.
