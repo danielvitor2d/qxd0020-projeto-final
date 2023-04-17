@@ -48,22 +48,23 @@ Funcionalidades para todos os usuários:
 **Frontend:**
 
 Lista as tecnologias, frameworks e bibliotecas utilizados.
-- [Vue3]([url](https://vuejs.org/))
-- [ViteJS]([url](https://vitejs.dev/))
-- [TailwindCSS]([url](https://tailwindcss.com/))
-- [vue-router]([url](https://router.vuejs.org/))
-- [Vuex]([url](https://vuex.vuejs.org/))
-- [axios]([url](https://axios-http.com/ptbr/))
-- [Docker]([url](https://www.docker.com/))
+- [Vue3](https://vuejs.org/)
+- [ViteJS](https://vitejs.dev/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Pinia](https://pinia.vuejs.org/)
+- [vue-router](https://router.vuejs.org/)
+- [Vuex](https://vuex.vuejs.org/)
+- [axios](https://axios-http.com/ptbr/)
+- [Docker](https://www.docker.com/)
 
 **Backend:**
 
 Lista as tecnologias, frameworks e bibliotecas utilizados.
-- [NestJS]([url](https://nestjs.com/))
-- [GraphQL]([url](https://graphql.org/))
-- [Prisma]([url](https://www.prisma.io/nestjs))
-- [PostgreSQL]([url](https://www.postgresql.org/))
-- [Docker]([url](https://www.docker.com/))
+- [NestJS](https://nestjs.com/)
+- [GraphQL](https://graphql.org/)
+- [Prisma](https://www.prisma.io/nestjs)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Docker](https://www.docker.com/)
 
 ## :shipit: Operações implementadas para cada entidade da aplicação
 
