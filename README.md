@@ -17,9 +17,9 @@ Aluno: O acesso de aluno permitirá que, tanto estudantes que desejam ingressar 
 Liste as principais entidades do sistema.
 
 - users
-- quizzes
-- quizzes_answer
-- quizzes_courses
+- test
+- test_answer
+- test_courses
 - courses
 
 ## :triangular_flag_on_post:	 Principais funcionalidades da aplicação
