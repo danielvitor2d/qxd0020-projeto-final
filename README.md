@@ -18,8 +18,6 @@ Liste as principais entidades do sistema.
 
 - users
 - test
-- test_answer
-- test_courses
 - courses
 
 ## :triangular_flag_on_post:	 Principais funcionalidades da aplicação
