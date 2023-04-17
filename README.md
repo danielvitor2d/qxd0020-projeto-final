@@ -4,15 +4,13 @@ O objetivo do sistema é a realização de testes vocacionais voltados para a UF
 
 ## :technologist: Membros da equipe
 
-Daniel Vitor
+Daniel Vitor Pereira Rodrigues - 521438 - Engenharia de Software
 Mônica Yasmin Costa da Silva - 469914 - Engenharia de Software
 
 ## :people_holding_hands: Papéis ou tipos de usuário da aplicação
 
 Administrador: O administrador será o tipo de acesso para o serviço social do campus e para psicologia, permitindo editar o formulário do teste vocacional e administrar os relacionamentos das respostas do teste com os cursos do campus.
 Aluno: O acesso de aluno permitirá que, tanto estudantes que desejam ingressar na universidade, quanto estudantes que já estão cursando uma graduação de nível superior, possam acessar o teste vocacional para tentar identificar sua afinidade com os cursos do campus.
-
-> Tenha em mente que obrigatoriamente a aplicação deve possuir funcionalidades acessíveis a todos os tipos de usuário e outra funcionalidades restritas a certos tipos de usuários.
 
 ## :spiral_calendar: Entidades ou tabelas do sistema
 
