@@ -21,7 +21,6 @@ Liste as principais entidades do sistema.
 - quizzes_answer
 - quizzes_courses
 - courses
-- [falta uma]
 
 ## :triangular_flag_on_post:	 Principais funcionalidades da aplicação
 
