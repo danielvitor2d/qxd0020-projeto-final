@@ -4,8 +4,8 @@ O objetivo do sistema é a realização de testes vocacionais voltados para a UF
 
 ## :technologist: Membros da equipe
 
-Daniel Vitor Pereira Rodrigues - 521438 - Engenharia de Software
-Mônica Yasmin Costa da Silva - 469914 - Engenharia de Software
+- Daniel Vitor Pereira Rodrigues - 521438 - Engenharia de Software
+- Mônica Yasmin Costa da Silva - 469914 - Engenharia de Software
 
 ## :people_holding_hands: Papéis ou tipos de usuário da aplicação
 
@@ -19,6 +19,7 @@ Liste as principais entidades do sistema.
 - users
 - quizzes
 - quizzes_answer
+- quizzes_courses
 - courses
 - [falta uma]
 
