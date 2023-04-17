@@ -1,14 +1,16 @@
-# :checkered_flag: NOME DO PROJETO
+# :checkered_flag: SISTEMA DE TESTE VOCACIONAL PARA OS CURSOS DE TI DA UFC CAMPUS QUIXADÁ.
 
-Breve descrição do que o seu projeto faz.
+O objetivo do sistema é a realização de testes vocacionais voltados para a UFC Quixadá. Serão disponibilizados testes para que o usuário responda e consiga descobrir se, por uma relação entre as respostas que ele forneceu e os objetivos/grades dos cursos, se ele possui afinidade com essa área e qual curso especificamente. 
 
 ## :technologist: Membros da equipe
 
-Matrícula, nome e curso dos participantes.
+Daniel Vitor
+Mônica Yasmin Costa da Silva - 469914 - Engenharia de Software
 
 ## :people_holding_hands: Papéis ou tipos de usuário da aplicação
 
-Informe aqui os tipos de usuário que irão interagir com a aplicação. Ex: administrador, locador, locatario, usuário não logado.
+Administrador: O administrador será o tipo de acesso para o serviço social do campus e para psicologia, permitindo editar o formulário do teste vocacional e administrar os relacionamentos das respostas do teste com os cursos do campus.
+Aluno: O acesso de aluno permitirá que, tanto estudantes que desejam ingressar na universidade, quanto estudantes que já estão cursando uma graduação de nível superior, possam acessar o teste vocacional para tentar identificar sua afinidade com os cursos do campus.
 
 > Tenha em mente que obrigatoriamente a aplicação deve possuir funcionalidades acessíveis a todos os tipos de usuário e outra funcionalidades restritas a certos tipos de usuários.
 
@@ -26,6 +28,17 @@ Liste as principais entidades do sistema.
 
 Descreve ou liste brevemente as principais funcionalidades da aplicação que será desenvolvida. Destaque a funcionalidades que serão acessévies a todos os usuários e aquelas restriras a usuários logados.
 
+Funcionalidades usuários logados:
+
+(ADMIN)
+- CRUD das perguntas do teste vocacional
+- CRUD da associação de respostas com os cursos do campus no teste vocacional
+
+(TODOS)
+- CRUD do histórico de testes
+
+Funcionalidades para todos os usuários:
+ - Responder o teste vocacional
 
 ----
 
