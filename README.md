@@ -1,6 +1,6 @@
-# :checkered_flag: SISTEMA DE TESTE VOCACIONAL PARA OS CURSOS DE TI DA UFC CAMPUS QUIXADÁ.
+# :checkered_flag: SISTEMA DE TESTE VOCACIONAL PARA OS CURSOS DA UFC.
 
-O objetivo do sistema é a realização de testes vocacionais voltados para a UFC Quixadá. Serão disponibilizados testes para que o usuário responda e consiga descobrir se, por uma relação entre as respostas que ele forneceu e os objetivos/grades dos cursos, se ele possui afinidade com essa área e qual curso especificamente. 
+O objetivo do sistema é a realização de testes vocacionais voltados para a Universidade Federal do Ceará. Serão disponibilizados testes para que o usuário responda e consiga descobrir se, por uma relação entre as respostas que ele forneceu e os objetivos/grades dos cursos, se ele possui afinidade com essa área e qual curso especificamente. 
 
 ## :technologist: Membros da equipe
 
@@ -27,6 +27,7 @@ Descreve ou liste brevemente as principais funcionalidades da aplicação que se
 Funcionalidades usuários logados:
 
 (ADMIN)
+- CRUD dos testes vocacionais
 - CRUD das perguntas do teste vocacional
 - CRUD da associação de respostas com os cursos do campus no teste vocacional
 
@@ -34,7 +35,8 @@ Funcionalidades usuários logados:
 - CRUD do histórico de testes
 
 Funcionalidades para todos os usuários:
- - Responder o teste vocacional
+ - Visualizar os testes vocacionais
+ - Responder os testes vocacionais
 
 ----
 
