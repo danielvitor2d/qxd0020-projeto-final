@@ -6,7 +6,7 @@ O objetivo do sistema é a realização de testes vocacionais voltados para a Un
 
 - Daniel Vitor Pereira Rodrigues - 521438 - Engenharia de Software
 - Mônica Yasmin Costa da Silva - 469914 - Engenharia de Software
-- Gabriel (Não está na disciplina)
+- Gabriel Correia (Não está na disciplina)
 - Thiago Tharles (Não está na disciplina)
 
 ## :people_holding_hands: Papéis ou tipos de usuário da aplicação
