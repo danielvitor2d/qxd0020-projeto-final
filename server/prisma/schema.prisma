@@ -15,15 +15,13 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-
+  id             String  @id @default(uuid())
   name           String
-  email          String @unique()
+  email          String  @unique()
   phonenumber    String
   hashedPassword String
-  roles          String @default("student")
-
-  createdAt String
-  updatedAt String
-  deletedAt String?
+  roles          String  @default("student")
+  createdAt      String
+  updatedAt      String
+  deletedAt      String?
 }
