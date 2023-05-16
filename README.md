@@ -57,7 +57,6 @@ Lista as tecnologias, frameworks e bibliotecas utilizados.
 - [TailwindCSS](https://tailwindcss.com/)
 - [Pinia](https://pinia.vuejs.org/)
 - [vue-router](https://router.vuejs.org/)
-- [Vuex](https://vuex.vuejs.org/)
 - [axios](https://axios-http.com/ptbr/)
 - [Docker](https://www.docker.com/)
 
