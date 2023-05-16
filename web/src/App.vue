@@ -20,7 +20,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
   <NavBar />
 
-  <RouterView />
+  <RouterView class="min-h-[calc(100vh-4rem)] bg-[#F5F5F5]" />
 </template>
 
 <!-- <style scoped>

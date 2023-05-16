@@ -43,7 +43,7 @@ const handleAddItem = () => {
       <button @click="() => onDelete(question.id)">
         <font-awesome-icon
           class="w-fit text-red-600"
-          icon="trash"
+          icon="trash-can"
         />
       </button>
     </div>

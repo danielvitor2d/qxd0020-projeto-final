@@ -7,10 +7,10 @@ import App from './App.vue'
 import router from './router'
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTrash, faXmark, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan, faXmark, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faTrash);
+library.add(faTrashCan);
 library.add(faXmark);
 library.add(faPlus);
 

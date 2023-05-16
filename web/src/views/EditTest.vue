@@ -65,7 +65,7 @@ const handleSave = () => {
 </script>
 
 <template>
-  <main class="w-full min-h-screen flex flex-col items-center justify-start bg-[#F5F5F5]">
+  <main class="w-full pb-10 flex flex-col items-center justify-start bg-[#F5F5F5]">
     <section class="w-1/2 px-16 mt-10 flex flex-col items-start justify-center gap-10">
       <div class="w-full flex flex-row items-center justify-between">
         <h1 class="font-sans text-xl font-bold text-black">

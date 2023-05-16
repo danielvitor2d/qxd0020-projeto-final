@@ -1,6 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
+import Login from '../views/Login.vue'
+import Registration from '../views/Registration.vue'
 import HomeView from '../views/HomeView.vue'
 import EditTest from '../views/EditTest.vue'
+import RecoverPassword from '../views/RecoverPassword.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,9 +23,24 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/edit-test',
-      name: 'edit-test',
+      path: '/admin/edit-test',
+      name: 'admin-edit-test',
       component: EditTest
+    },
+    {
+      path: '/auth/recover-password',
+      name: 'recover-password',
+      component: RecoverPassword
+    },
+    {
+      path: '/auth/registration',
+      name: 'registration',
+      component: Registration
+    },
+    {
+      path: '/auth/login',
+      name: 'login',
+      component: Login
     },
   ]
 })

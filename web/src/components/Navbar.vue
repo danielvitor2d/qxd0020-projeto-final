@@ -2,7 +2,7 @@
   <nav
     class="
       w-full
-      h-10
+      h-[4rem]
       px-6
       py-8
       mx-auto
@@ -20,7 +20,8 @@
           md:text-2xl
           hover:text-blue-400
         "
-        >Logo
+      >
+        <img class="w-48 h-14" src="../assets/logo.png" alt="Logo UFC" />
       </router-link>
       <div class="flex md:hidden">
         <button
@@ -71,7 +72,11 @@
         </router-link>
       </li>
       <li class="text-sm font-bold text-white hover:text-blue-400">
-        Admin
+        <router-link
+          to="/admin/edit-test"
+        >
+          Admin
+        </router-link>
       </li>
     </ul>
   </nav>
