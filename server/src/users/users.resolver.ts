@@ -31,7 +31,6 @@ export class UsersResolver {
     return 'Hello World!';
   }
 
-  @UseGuards(GqlAuthGuard)
   @Mutation(() => User)
   async createUser(@Args('createUserInput') createUserInput: CreateUserInput) {
     return this.usersService.create(createUserInput);
