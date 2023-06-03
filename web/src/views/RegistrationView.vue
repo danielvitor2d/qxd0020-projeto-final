@@ -1,109 +1,77 @@
+<!-- eslint-disable -->
 <template>
-  <div class="left pt-20">
-    <button id="btn-voltar" @click="goBack">Voltar</button>
-    <div class="cadastro">
-      <p class="font-semibold text-xl text-center">Cadastro</p>
-      <div>
-        <label for="name">Nome:</label>
-        <input type="text" id="name" name="name" v-model="name" placeholder="Digite seu nome aqui">
-        <label for="username">Email:</label>
-        <input type="text" id="username" name="username" v-model="username" placeholder="Digite seu email aqui">
-        <label for="birthdate">Data de nascimento:</label>
-        <input type="date" id="birthdate" name="birthdate" v-model="birthdate">
-        <label for="password">Senha:</label>
-        <input type="password" id="password" name="password" v-model="password" placeholder="Digite sua senha aqui">
-        <label for="password-confirm">Confirmação de senha:</label>
-        <input type="password" id="password-confirm" name="password-confirm" v-model="passwordConfirm"
-          placeholder="Confirme sua senha">
-        <button type="submit" @click="register">Entrar</button>
-      </div>
+  <div class="flex items-center justify-center h-screen bg-gradient-to-br from-blue-600 to-indigo-700">
+    <div class="w-[30rem] bg-white rounded-xl shadow-xl p-10">
+      <h1 class="text-4xl font-semibold text-gray-900 mb-8">Register</h1>
+      <form class="space-y-6">
+        <input
+          v-model="values.nome"
+          type="text"
+          placeholder="Nome"
+          class="bg-gray-200 text-gray-900 w-full py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          :class="{ 'border-red-500': errors['nome'] }"
+          v-validate="'required'"
+        />
+        <ErrorMessage class="text-red-500" name="nome" />
+
+        <input
+          v-model="values.email"
+          type="email"
+          placeholder="E-mail"
+          class="bg-gray-200 text-gray-900 w-full py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          :class="{ 'border-red-500': errors['email'] }"
+          v-validate="'required|email'"
+        />
+        <ErrorMessage class="text-red-500" name="email" />
+
+        <input
+          v-model="values.birthDate"
+          type="date"
+          placeholder="Data de Nascimento"
+          class="bg-gray-200 text-gray-900 w-full py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          :class="{ 'border-red-500': errors['birthDate'] }"
+          v-validate="'required'"
+        />
+        <ErrorMessage class="text-red-500" name="birthDate" />
+
+        <input
+          v-model="values.contato"
+          type="text"
+          placeholder="Contato"
+          class="bg-gray-200 text-gray-900 w-full py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          :class="{ 'border-red-500': errors['contato'] }"
+          v-validate="'required'"
+        />
+        <ErrorMessage class="text-red-500" name="contato" />
+
+        <input
+          v-model="values.senha"
+          type="password"
+          placeholder="Senha"
+          class="bg-gray-200 text-gray-900 w-full py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          :class="{ 'border-red-500': errors['senha'] }"
+          v-validate="'required'"
+        />
+        <ErrorMessage class="text-red-500" name="senha" />
+
+        <button
+          type="submit"
+          class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg w-full transition duration-300 ease-in-out"
+        >
+          Cadastrar
+        </button>
+      </form>
     </div>
   </div>
 </template>
-  
+
 <script setup lang="ts">
-  import { useRouter } from 'vue-router'
-  import { ref } from 'vue';
-
-  // const route = useRoute()
-  const router = useRouter()
-
-  const name = ref('')
-  const username = ref('')
-  const birthdate = ref('')
-  const password = ref('')
-  const passwordConfirm = ref('')
-
-  const register = () => {
-    // Lógica de autenticação aqui
-  }
-
-  const goBack = () => {
-    router.go(-1)
-  }
-</script>
+import { ErrorMessage, useForm } from 'vee-validate';
   
-<style scoped>
-.left {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  background-color: #F5F5F5;
-}
+  const { handleSubmit, values, errors } = useForm();
+  const onSubmit = handleSubmit((values) => {
+    // Handle form submission here
+    console.log(values);
+  });
 
-.cadastro {
-  width: 35rem;
-  background-color: #F5F5F5;
-  border-radius: 0px;
-}
-
-.cadastro label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-.cadastro input[type="text"],
-.cadastro input[type="password"],
-.cadastro input[type="date"] {
-  width: 100%;
-  padding: 8px;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 15px;
-}
-
-.cadastro button[type="submit"] {
-  background-color: #007AC2;
-  color: #fff;
-  border: none;
-  border: 3px;
-  padding: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 15px;
-  width: 100%;
-}
-
-.cadastro button[type="submit"]:hover {
-  background-color: #0062a3;
-}
-
-#btn-voltar {
-  background-color: #007AC2;
-  color: #fff;
-  border: none;
-  border: 3px;
-  padding: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  width: 10rem;
-  position: fixed;
-  left: 1rem;
-  top: 5rem;
-}
-
-#btn-voltar:hover {
-  background-color: #0062a3;
-}
-</style>
+</script>

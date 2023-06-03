@@ -1,26 +1,37 @@
 <template>
-  <div class="w-full h-full pt-20 flex items-start justify-center">
-    <button id="btn-voltar" @click="goBack">Voltar</button>
-    <div class="login w-2/12">
-      <p class="mb-5 font-semibold text-center text-xl">Entre com sua conta</p>
-      <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-1">
-          <label class="font-lg text-left font-normal" for="username">Email:</label>
-          <input type="text" id="username" name="username" v-model="username" placeholder="Digite seu email aqui">
-        </div>
-        <div class="flex flex-col gap-1">
-          <label class="font-lg text-left font-normal" for="password">Senha:</label>
-          <input type="password" id="password" name="password" v-model="password" placeholder="Digite sua senha aqui">
-        </div>
-        <button type="submit" @click="login">Entrar</button>
-      </div>
+  <div class="w-full flex items-center justify-center h-screen bg-gradient-to-br from-blue-600 to-indigo-700">
+
+    <div class="w-[30rem] bg-white rounded-xl shadow-xl p-10">
+
+      <h1 class="text-4xl font-semibold text-gray-900 mb-8">Login</h1>
+
+      <form class="space-y-6">
+        <input
+          type="text"
+          placeholder="Email"
+          class="w-full bg-gray-200 text-gray-900 py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <input
+          type="password"
+          placeholder="Senha"
+          class="w-full bg-gray-200 text-gray-900 py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <button
+          type="submit"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg transition duration-300 ease-in-out"
+        >
+          Entrar
+        </button>
+      </form>
     </div>
   </div>
 </template>
-  
+
 <script setup lang="ts">
-  import { useRouter } from 'vue-router'
   import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
   // const route = useRoute()
   const router = useRouter()
@@ -36,49 +47,4 @@
     router.go(-1)
   }
 </script>
-  
-<style scoped>
-.login button[type="submit"] {
-  background-color: #007AC2;
-  color: #fff;
-  border: none;
-  border: 3px;
-  padding: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.login button[type="submit"]:hover {
-  background-color: #0062a3;
-}
-
-.login input[type="text"] {
-  padding: 8px;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-}
-
-.login input[type="password"] {
-  padding: 8px;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-}
-
-#btn-voltar {
-  background-color: #007AC2;
-  color: #fff;
-  border: none;
-  border: 3px;
-  padding: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  width: 10rem;
-  position: fixed;
-  left: 1rem;
-  top: 5rem;
-}
-
-#btn-voltar:hover {
-  background-color: #0062a3;
-}
-</style>
+ 

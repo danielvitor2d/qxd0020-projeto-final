@@ -1,3 +1,11 @@
+<script setup lang="ts">
+  import { useAuthStore } from '../stores/authStore';
+
+  const authStore = useAuthStore();
+
+
+</script>
+
 <template>
   <nav
     class="
@@ -23,23 +31,6 @@
       >
         <img class="w-48 h-14" src="../assets/logo.png" alt="Logo UFC" />
       </router-link>
-      <div class="flex md:hidden">
-        <button
-          type="button"
-          class="
-            text-gray-800
-            hover:text-gray-400
-            focus:outline-none focus:text-gray-400
-          "
-        >
-          <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
-            <path
-              fill-rule="evenodd"
-              d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-            ></path>
-          </svg>
-        </button>
-      </div>
     </div>
 
 
@@ -71,9 +62,16 @@
           Cursos
         </router-link>
       </li>
-      <li class="text-sm font-bold text-white hover:text-blue-400">
+      <li class="px-3 py-2 rounded-sm bg-white text-sm font-bold text-[#007AC2] hover:text-blue-400">
+        <router-link
+          to="/auth/login"
+          v-if="!authStore.isLogged"
+        >
+          Log in
+        </router-link>
         <router-link
           to="/admin/edit-test"
+          v-else
         >
           Admin
         </router-link>
