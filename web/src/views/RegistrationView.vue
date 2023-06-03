@@ -47,7 +47,7 @@
 .left {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   background-color: #F5F5F5;
 }
 

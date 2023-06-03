@@ -1,0 +1,96 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Question > renders correctly 1`] = `
+<div
+  class="w-full h-fit p-5 bg-[#F5F5F5] border-[1px] border-gray-400 rounded-md"
+>
+  <div
+    class="w-full mb-6 flex flex-row items-center justify-center gap-10"
+  >
+    <input
+      class="w-fit flex-1 bg-[#F5F5F5] font-normal text-sm px-1 py-2 border-[1px] border-gray-400"
+      type="text"
+    />
+    <button
+      class="delete-button"
+    >
+      <font-awesome-icon
+        class="w-fit text-red-600"
+        icon="trash-can"
+      />
+    </button>
+  </div>
+  <div
+    class="w-full flex flex-col gap-3"
+  >
+    
+    <div
+      class="w-full flex flex-row items-center justify-between"
+    >
+      <p
+        class="flex-1"
+      >
+        Option 1
+      </p>
+      <p
+        class="mr-4"
+      >
+        Course A
+      </p>
+      <button>
+        <font-awesome-icon
+          icon="fa-xmark"
+        />
+      </button>
+    </div>
+    <div
+      class="w-full flex flex-row items-center justify-between"
+    >
+      <p
+        class="flex-1"
+      >
+        Option 2
+      </p>
+      <p
+        class="mr-4"
+      >
+        Course B
+      </p>
+      <button>
+        <font-awesome-icon
+          icon="fa-xmark"
+        />
+      </button>
+    </div>
+    <div
+      class="w-full flex flex-row items-center justify-between"
+    >
+      <p
+        class="flex-1"
+      >
+        Option 3
+      </p>
+      <p
+        class="mr-4"
+      >
+        Course C
+      </p>
+      <button>
+        <font-awesome-icon
+          icon="fa-xmark"
+        />
+      </button>
+    </div>
+    
+  </div>
+  <button
+    class="add-button flex flex-row gap-3 mt-3 px-4 py-2 items-center justify-center text-[#007AC2] rounded-md hover:bg-[#2ea6eb] hover:text-white"
+  >
+    <font-awesome-icon
+      class="w-fit"
+      icon="plus"
+    />
+     Adicionar opção 
+  </button>
+</div>
+`;

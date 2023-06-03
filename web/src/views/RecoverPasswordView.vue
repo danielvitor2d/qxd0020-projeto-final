@@ -11,8 +11,8 @@
 </template>
   
 <script setup lang="ts">
-  import { useRouter } from 'vue-router'
   import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
   // const route = useRoute()
   const router = useRouter()
@@ -35,7 +35,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   background-color: #fff;
 }
 
