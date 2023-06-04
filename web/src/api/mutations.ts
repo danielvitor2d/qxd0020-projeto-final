@@ -13,6 +13,28 @@ const LOGIN_MUTATION = gql`
   }
 `;
 
+const REGISTER_MUTATION = gql`
+  mutation Register() {
+    createUser(createUserInput: {
+      name: "Daniel Vitor",
+      email: "danielvitor.p1@gmail.com",
+      password: "danielpic123",
+      phonenumber: "88996134386",
+      roles: "student"
+    }) {
+      createdAt
+      deletedAt
+      email
+      hashedPassword
+      id
+      name
+      phonenumber
+      roles
+      updatedAt
+    }
+  }
+`;
+
 export async function login(email: string, password: string) {
   const { mutate } = useMutation(LOGIN_MUTATION);
   try {
@@ -22,3 +44,7 @@ export async function login(email: string, password: string) {
     console.error('Error logging in:', error);
   }
 };
+
+export async function createUser() {
+
+}

@@ -8,7 +8,7 @@
           <Field name="userEmail" type="email" v-model="userEmail.value" placeholder="E-mail" rules="required|email" class="w-full bg-gray-200 text-gray-900 py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
           <ErrorMessage class="text-sm text-red-500" name="userEmail" />
         </div>
-        
+
         <div class="flex flex-col gap-1">
           <Field name="password" type="password" v-model="password.value" placeholder="Senha" rules="required" class="w-full bg-gray-200 text-gray-900 py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
           <ErrorMessage class="text-sm text-red-500" name="password" />
@@ -54,7 +54,7 @@ const onSubmit = async () => {
     const pwd = password.value as unknown as string
 
     const access_token = await login(email, pwd)
-    console.log(access_token)
+    // console.log(access_token)
 
     const authStore = useAuthStore()
 

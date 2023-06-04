@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { onUnmounted, ref, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
+
 import { useAuthStore } from '../stores/authStore';
 
   const authStore = useAuthStore();
@@ -12,12 +13,12 @@ import { useAuthStore } from '../stores/authStore';
   function logout() {
     authStore.clearToken()
 
-    router.push('/auth/login')
+    router.replace('/auth/login')
   }
 
   const toggleDropdown = () => {
-      isDropdownOpen.value = !isDropdownOpen.value;
-    };
+    isDropdownOpen.value = !isDropdownOpen.value;
+  };
 
   const handleClickOutside = (event: any) => {
     // @ts-ignore
