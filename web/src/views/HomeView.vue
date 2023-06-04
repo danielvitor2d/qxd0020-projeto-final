@@ -4,10 +4,10 @@
 <template>
   <main class="pb-16">
     <section class="flex flex-col items-center">
-      <div class="w-full relative">
+      <div class="w-full">
         <img class="w-full" src="../assets/main.svg" alt="background" />
 
-        <button class="absolute top-52 left-16 bg-[#FFF] text-[#007AC2] py-[0.5rem] px-[1rem] rounded-sm font-bold hover:bg-[#007AC2] hover:text-[#FFF] active:bg-[#4299e1] active:text-[#FFF]">
+        <button class="z-20 top-52 left-16 bg-[#FFF] text-[#007AC2] py-[0.5rem] px-[1rem] rounded-sm font-bold hover:bg-[#007AC2] hover:text-[#FFF] active:bg-[#4299e1] active:text-[#FFF]">
           Realizar teste vocacional
         </button>
       </div>

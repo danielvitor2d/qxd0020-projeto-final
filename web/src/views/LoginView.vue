@@ -1,22 +1,18 @@
 <template>
   <div class="w-full flex items-center justify-center h-screen bg-gradient-to-br from-blue-600 to-indigo-700">
-
     <div class="w-[30rem] bg-white rounded-xl shadow-xl p-10">
-
       <h1 class="text-4xl font-semibold text-gray-900 mb-8">Login</h1>
 
-      <form class="space-y-6">
-        <input
-          type="text"
-          placeholder="Email"
-          class="w-full bg-gray-200 text-gray-900 py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-
-        <input
-          type="password"
-          placeholder="Senha"
-          class="w-full bg-gray-200 text-gray-900 py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+      <Form @submit="onSubmit" class="flex flex-col gap-4">
+        <div class="flex flex-col gap-1">
+          <Field name="userEmail" type="email" v-model="userEmail.value" placeholder="E-mail" rules="required|email" class="w-full bg-gray-200 text-gray-900 py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <ErrorMessage class="text-sm text-red-500" name="userEmail" />
+        </div>
+        
+        <div class="flex flex-col gap-1">
+          <Field name="password" type="password" v-model="password.value" placeholder="Senha" rules="required" class="w-full bg-gray-200 text-gray-900 py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <ErrorMessage class="text-sm text-red-500" name="password" />
+        </div>
 
         <button
           type="submit"
@@ -24,27 +20,49 @@
         >
           Entrar
         </button>
-      </form>
+      </Form>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue';
+import { email, required } from '@vee-validate/rules';
+import { ErrorMessage, Field, Form, defineRule, useField } from 'vee-validate';
 import { useRouter } from 'vue-router';
 
-  // const route = useRoute()
-  const router = useRouter()
+import { login } from '@/api/mutations';
+import { useAuthStore } from '@/stores/authStore';
 
-  const username = ref('')
-  const password = ref('')
+defineRule('required', (value: any) => {
+  if (!required(value)) return 'Campo obrigatório'
+  return true
+});
 
-  const login = () => {
-    
+defineRule('email', (value: any) => {
+  if (!email(value)) return 'E-mail inválido'
+  return true;
+});
+
+const router = useRouter()
+
+const userEmail = useField('userEmail')
+const password = useField('password');
+
+const onSubmit = async () => {
+  try {
+    const email = userEmail.value as unknown as string
+    const pwd = password.value as unknown as string
+
+    const access_token = await login(email, pwd)
+    console.log(access_token)
+
+    const authStore = useAuthStore()
+
+    authStore.setToken(access_token)
+
+    router.replace('/')
+  } catch (error) {
+    console.log(error);
   }
-
-  const goBack = () => {
-    router.go(-1)
-  }
+};
 </script>
- 

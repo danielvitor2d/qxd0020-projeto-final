@@ -2,7 +2,7 @@
 <template>
   <div class="flex items-center justify-center h-screen bg-gradient-to-br from-blue-600 to-indigo-700">
     <div class="w-[30rem] bg-white rounded-xl shadow-xl p-10">
-      <h1 class="text-4xl font-semibold text-gray-900 mb-8">Register</h1>
+      <h1 class="text-4xl font-semibold text-gray-900 mb-8">Cadastrar</h1>
       <form class="space-y-6">
         <input
           v-model="values.nome"
@@ -58,7 +58,7 @@
           type="submit"
           class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg w-full transition duration-300 ease-in-out"
         >
-          Cadastrar
+          Criar conta
         </button>
       </form>
     </div>

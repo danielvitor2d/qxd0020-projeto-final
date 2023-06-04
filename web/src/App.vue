@@ -1,4 +1,12 @@
 <script setup lang="ts">
+import { onBeforeMount } from 'vue';
+
+import { fetchUsers } from './api/queries';
+
+onBeforeMount(async () => {
+  console.log(await fetchUsers())
+})
+
 </script>
 
 <template>

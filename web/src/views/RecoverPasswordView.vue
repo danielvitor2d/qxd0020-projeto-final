@@ -1,14 +1,29 @@
 <template>
-  <div class="content">
-    <button id="btn-voltar" @click="goBack">Voltar</button>
-    <div class="recuperacaoDeSenha w-fit">
-      <h2 class="font-semibold text-xl text-center">Recuperação de senha</h2>
-      <h5 class="font-normal text-md text-start mt-5 mb-2">Insira seu email para recuperar sua senha</h5>
-      <input class="w-full" type="text" id="username" name="username" v-model="username" placeholder="Digite seu email aqui">
-      <button id="redefinir" class="w-full" @click.prevent="recuperacaoDeSenha">Redefinir senha</button>
+  <div class="flex items-center justify-center h-screen bg-gradient-to-br from-blue-600 to-indigo-700">
+    <div class="bg-white rounded-xl shadow-xl p-10">
+      <h1 class="text-4xl font-semibold text-gray-900 mb-8">Recuperação de Senha</h1>
+      <form class="space-y-6">
+        <h5 class="font-normal text-md text-gray-900 text-start mt-5 mb-2">Insira seu e-mail para recuperar sua senha</h5>
+        <input
+          class="bg-gray-200 text-gray-900 w-full py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          type="text"
+          id="username"
+          name="username"
+          v-model="username"
+          placeholder="Digite seu e-mail aqui"
+        />
+        <button
+          id="redefinir"
+          class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg w-full transition duration-300 ease-in-out"
+          @click.prevent="recuperacaoDeSenha"
+        >
+          Redefinir senha
+        </button>
+      </form>
     </div>
   </div>
 </template>
+
   
 <script setup lang="ts">
   import { ref } from 'vue';
@@ -19,78 +34,8 @@ import { useRouter } from 'vue-router';
 
   const username = ref('')
 
-  const goBack = () => {
-    router.go(-1)
-  }
-
   const recuperacaoDeSenha = () => {
 
   }
 
 </script>
-  
-<style scoped>
-.content {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  background-color: #fff;
-}
-
-.recuperacaoDeSenha {
-  background-color: #fff;
-  padding: 5%;
-  margin-top: 5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.recuperacaoDeSenha label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.recuperacaoDeSenha input[type="text"] {
-  padding: 8px;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 15px;
-}
-
-.recuperacaoDeSenha #redefinir {
-  background-color: #007AC2;
-  color: #fff;
-  border: none;
-  border: 3px;
-  padding: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 15px;
-}
-
-.recuperacaoDeSenha #redefinir:hover {
-  background-color: #0062a3;
-}
-
-#btn-voltar {
-  background-color: #007AC2;
-  color: #fff;
-  border: none;
-  border: 3px;
-  padding: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  width: 10rem;
-  position: fixed;
-  left: 1rem;
-  top: 5rem;
-}
-
-#btn-voltar:hover {
-  background-color: #0062a3;
-}</style>

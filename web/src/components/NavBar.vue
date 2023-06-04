@@ -1,8 +1,41 @@
 <script setup lang="ts">
-  import { useAuthStore } from '../stores/authStore';
+  import { onUnmounted, ref, watchEffect } from 'vue';
+import { useRouter } from 'vue-router';
+import { useAuthStore } from '../stores/authStore';
 
   const authStore = useAuthStore();
+  const router = useRouter()
 
+  const dropdown = ref(null);
+  const isDropdownOpen = ref(false);
+
+  function logout() {
+    authStore.clearToken()
+
+    router.push('/auth/login')
+  }
+
+  const toggleDropdown = () => {
+      isDropdownOpen.value = !isDropdownOpen.value;
+    };
+
+  const handleClickOutside = (event: any) => {
+    // @ts-ignore
+    if (dropdown.value && !dropdown.value.contains(event.target)) {
+      isDropdownOpen.value = false;
+    }
+  };
+
+  watchEffect((onInvalidate) => {
+    document.addEventListener('click', handleClickOutside);
+    onInvalidate(() => {
+      document.removeEventListener('click', handleClickOutside);
+    });
+  });
+
+  onUnmounted(() => {
+    document.removeEventListener('click', handleClickOutside);
+  });
 
 </script>
 
@@ -34,48 +67,38 @@
     </div>
 
 
-    <ul
-      class="
-        flex
-        flex-col
-        mt-8
-        space-y-4
-        md:flex
-        md:space-y-0
-        md:flex-row
-        md:items-center
-        md:space-x-10
-        md:mt-0
-      "
-    >
+    <ul class="flex flex-col mt-8 space-y-4 md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0">
       <li class="text-sm font-bold text-white hover:text-blue-400">
-        <router-link
-          to="/"
-        >
-          Home
-        </router-link>
+        <router-link to="/" class="block">Home</router-link>
       </li>
       <li class="text-sm font-bold text-white hover:text-blue-400">
-        <router-link
-          to="/courses"
-        >
-          Cursos
-        </router-link>
+        <router-link to="/courses" class="block">Cursos</router-link>
       </li>
-      <li class="px-3 py-2 rounded-sm bg-white text-sm font-bold text-[#007AC2] hover:text-blue-400">
-        <router-link
-          to="/auth/login"
-          v-if="!authStore.isLogged"
-        >
-          Log in
-        </router-link>
-        <router-link
-          to="/admin/edit-test"
-          v-else
-        >
-          Admin
-        </router-link>
+      <li>
+        <div v-if="!authStore.isLogged" class="bg-white rounded-md shadow-lg">
+          <button @click="() => router.push('/auth/login')" class="bg-white px-4 py-2 rounded focus:outline-none">
+            <p class="text-sm font-bold text-[#007AC2] hover:text-[#007AC2]">Login</p>
+          </button>
+        </div>
+        <div v-else class="relative" ref="dropdown">
+          <button @click="toggleDropdown" class="bg-white px-4 py-2 rounded focus:outline-none">
+            <p class="text-sm font-bold text-[#007AC2] hover:text-[#007AC2]">Admin</p>
+          </button>
+
+          <div v-if="isDropdownOpen" class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-lg">
+            <router-link to="/admin/edit-test" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+              Perfil do Usuário
+            </router-link>
+            <router-link to="/admin/edit-test" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+              Histórico
+            </router-link>
+            <button @click="logout" class="w-full block px-4 py-2 text-gray-800 hover:bg-gray-100 text-left">
+              Logout
+            </button>
+          </div>
+        </div>
       </li>
     </ul>
+
   </nav>
 </template>
