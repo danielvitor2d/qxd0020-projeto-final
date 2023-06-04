@@ -90,6 +90,9 @@ import { useAuthStore } from '../stores/authStore';
             <router-link to="/admin/edit-test" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
               Perfil do Usuário
             </router-link>
+            <router-link to="/admin/tests" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+              Testes
+            </router-link>
             <router-link to="/admin/edit-test" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
               Histórico
             </router-link>

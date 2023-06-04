@@ -10,8 +10,9 @@ generator erd {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model User {
@@ -24,4 +25,40 @@ model User {
   createdAt      String
   updatedAt      String
   deletedAt      String?
+}
+
+model Course {
+  id         String @id @default(uuid())
+  name       String
+  university String
+
+  questionItems ItemQuestion[]
+}
+
+model Test {
+  id          String @id @default(uuid())
+  description String
+
+  questions Question[]
+}
+
+model Question {
+  id          String @id @default(uuid())
+  description String
+
+  test   Test   @relation(fields: [testId], references: [id])
+  testId String
+
+  questionItems ItemQuestion[]
+}
+
+model ItemQuestion {
+  id          String @id @default(uuid())
+  description String
+
+  question   Question @relation(fields: [questionId], references: [id])
+  questionId String
+
+  course   Course @relation(fields: [courseId], references: [id])
+  courseId String
 }

@@ -34,13 +34,29 @@ const router = createRouter({
           component: () => import('@/views/HomeView.vue')
         },
         {
-          path: '/courses',
+          path: 'courses',
           name: 'courses',
           component: () => import('@/views/CoursesView.vue')
         },
+      ]
+    },
+    {
+      path: '/admin',
+      component: () => import('@/layouts/MainLayout.vue'),
+      children: [
         {
-          path: '/admin/edit-test',
-          name: 'admin-edit-test',
+          path: 'tests',
+          name: 'tests',
+          component: () => import('@/views/TestsView.vue')
+        },
+        {
+          path: 'create-test',
+          name: 'create-test',
+          component: () => import('@/views/CreateTestView.vue')
+        },
+        {
+          path: 'edit-test',
+          name: 'edit-test',
           component: () => import('@/views/EditTestView.vue')
         },
       ]

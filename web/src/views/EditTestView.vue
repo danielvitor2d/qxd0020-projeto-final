@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import Question from '../components/Question.vue';
 
 const questions = ref([
   {
@@ -81,11 +80,11 @@ const handleSave = () => {
       </div>
 
       <div class="w-full flex flex-col gap-6">
-        <Question
+        <!-- <Question
           v-for="question of questions"
           :question="question"
           :on-delete="handleDeleteQuestion"
-        />
+        /> -->
       </div>
 
       <button 
