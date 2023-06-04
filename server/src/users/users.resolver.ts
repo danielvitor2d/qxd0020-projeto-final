@@ -1,19 +1,19 @@
 import { UseGuards } from '@nestjs/common';
 import {
-  Resolver,
-  Query,
-  Mutation,
   Args,
-  ID,
   Field,
+  ID,
+  Mutation,
   ObjectType,
+  Query,
+  Resolver,
 } from '@nestjs/graphql';
 
-import { User } from './entities/user.entity';
-import { UsersService } from './users.service';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
+import { User } from './entities/user.entity';
 import { GqlAuthGuard } from './guards/gql-auth.guard';
+import { UsersService } from './users.service';
 
 @ObjectType()
 class Token {

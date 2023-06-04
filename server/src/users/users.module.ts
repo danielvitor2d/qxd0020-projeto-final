@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 
-import { UsersService } from './users.service';
-import { UsersResolver } from './users.resolver';
-import { JwtStrategy } from './strategies/jwt.strategy';
-import { PrismaService } from 'src/database/prisma.service';
-import { PassportModule } from '@nestjs/passport';
-import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { GqlAuthGuard } from './guards/gql-auth.guard';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { GraphQLModule } from '@nestjs/graphql';
+import { PassportModule } from '@nestjs/passport';
+import { PrismaService } from 'src/database/prisma.service';
+import { GqlAuthGuard } from './guards/gql-auth.guard';
+import { JwtStrategy } from './strategies/jwt.strategy';
+import { UsersResolver } from './users.resolver';
+import { UsersService } from './users.service';
 
 @Module({
   imports: [
