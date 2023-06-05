@@ -57,12 +57,12 @@ const router = createRouter({
         {
           path: 'test/:id/edit',
           name: 'EditTestSingle',
-          component: () => import('@/views/TestView.vue')
+          component: () => import('@/views/SaveTestView.vue')
         },
         {
-          path: 'create-test',
+          path: 'test/create',
           name: 'CreateTestPage',
-          component: () => import('@/views/CreateTestView.vue')
+          component: () => import('@/views/SaveTestView.vue')
         },
       ]
     },

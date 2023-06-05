@@ -30,7 +30,9 @@ interface Test {
 
 const router = useRouter()
 
-const registerNewTest = () => router.push('/admin/create-test')
+const registerNewTest = () => router.push({
+  name: 'CreateTestPage'
+})
 
 const GET_TESTS_QUERY = gql`
   query {

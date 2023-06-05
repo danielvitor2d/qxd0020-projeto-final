@@ -1,7 +1,7 @@
 <template>
-  <div class="container mx-auto py-8">
-    <h1 class="text-3xl font-semibold mb-8">Criar Teste Vocacional</h1>
-    <form class="max-w-5xl mx-auto" @submit.prevent="createTest">
+  <div class="w-full flex flex-col items-center py-8">
+    <h1 class="text-3xl font-semibold mb-8">{{ isEdit ? 'Editar Teste Vocacional' : 'Criar Teste Vocacional' }}</h1>
+    <form class="w-6/12" @submit.prevent="createTest">
       <div class="mb-4">
         <label for="title" class="block text-gray-700 font-semibold mb-2">Título do Teste:</label>
         <input v-model="test.description" type="text" id="title" class="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -18,7 +18,7 @@
                 </svg>
               </button>
             </div>
-            <div v-for="(item, itemIndex) in question.items" :key="itemIndex" class="flex items-center mb-2">
+            <div v-for="(item, itemIndex) in question.questionItems" :key="itemIndex" class="flex items-center mb-2">
               <input v-model="item.description" type="text" class="w-3/4 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500">
               <div v-if="loadingCourses" class="relative w-1/4 ml-2">Carregando cursos...</div>
               <div v-else class="relative w-1/4 ml-2">
@@ -43,40 +43,51 @@
         </button>
       </div>
       <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-8">
-        Criar Teste
+        {{ isEdit ? 'Salvar alterações' : 'Criar Teste' }}
       </button>
     </form>
   </div>
 </template>
 
 <script setup lang="ts">
-import router from '@/router';
 import { useMutation, useQuery } from '@vue/apollo-composable';
 import { gql } from 'apollo-boost';
 import { computed, ref } from 'vue';
+import { useRouter } from 'vue-router';
 import { POSITION, useToast } from "vue-toastification";
+import deepCopyObject from '../utils/deep-copy';
+
+const router = useRouter()
+
+const isEdit = router.currentRoute.value.params.id ? true : false
 
 // interfaces
 interface Course {
-  id: string;
-  name: string;
+  id: string
+  name: string
+}
+
+interface QueryResult {
+  getTestById: Test
 }
 
 interface Item {
+  id: string;
   description: string;
-  courseId: string | null;
+  course: Course | null
+  courseId: string | null
 }
 
 interface Question {
+  id: string;
   description: string;
-  items: Item[];
+  questionItems: Item[];
 }
 
 interface Test {
   description: string;
   questions: Question[];
 }
-
 const toast = useToast()
 
 // queries
@@ -89,6 +100,23 @@ const GET_COURSES_QUERY = gql`
   }
 `;
 
+const GET_TEST_QUERY = gql`
+  query GetTestById($id: String!) {
+    getTestById(id: $id) {
+      description
+      questions {
+        id
+        description
+        questionItems {
+          description
+          course {
+            name
+          }
+        }
+      }
+    }
+  }
+`;
 // mutations
 const REGISTER_TEST_MUTATION = gql`
   mutation CreateTest($description: String!) {
@@ -121,6 +149,19 @@ const { result, loading: loadingCourses } = useQuery<{
   getAllCourses: Array<Course>
 }>(GET_COURSES_QUERY)
 
+// getTestByid
+const { result: getTestResult, loading: getTestLoading, error: getTestError, onResult } = useQuery<QueryResult>(GET_TEST_QUERY, {
+  id: router.currentRoute.value.params.id
+})
+
+onResult(() => {
+  // if (!getTestLoading && !getTestError && getTestResult.value?.getTestById) {
+    // console.log(getTestResult.value?.getTestById)
+    if (getTestResult.value?.getTestById)
+        test.value = deepCopyObject(getTestResult.value?.getTestById)
+  // }
+})
+
 // registerTest
 const { mutate: createTestMutate } = useMutation(REGISTER_TEST_MUTATION)
 
@@ -137,9 +178,10 @@ const test = ref<Test>({
   description: '',
   questions: [
     {
+      id: '',
       description: '',
-      items: [
-        { description: '', courseId: null },
+      questionItems: [
+        { id: '', description: '', course: null, courseId: null },
       ],
     },
   ],
@@ -155,13 +197,13 @@ const createTest = async () => {
     return
   }
 
-  // test.value.questions.map(question => {
-  //   question.items.map(item => {
-  //     console.log(item.description +  ' ' + item.courseId)
-  //   })
-  // })
+  test.value.questions.map(question => {
+    question.questionItems.map(item => {
+      console.log(item.description +  ' ' + item.courseId)
+    })
+  })
 
-  if (!test.value.questions.every(question => question.items.every(item => item.courseId !== null))) {
+  if (!test.value.questions.every(question => question.questionItems.every(item => item.courseId !== null))) {
     toast.error("Todos os items devem estar vinculados a um curso.", {
       position: POSITION.BOTTOM_RIGHT,
     })
@@ -189,9 +231,9 @@ const createTest = async () => {
 
   const { id } = resultCreateTest.data.createTest
 
-  toast.success(`Teste criado com sucesso: id = ${id}`)
+  // toast.success(`Teste criado com sucesso: id = ${id}`)
 
-  for (const question of test.value.questions) {
+  for await (const question of test.value.questions) {
     const resultCreateQuestion = await createQuestionMutate({
       input: {
         description: question.description,
@@ -213,7 +255,7 @@ const createTest = async () => {
 
     console.log(`Created question: ${questionId}`)
 
-    for (const item of question.items) {
+    for await (const item of question.questionItems) {
       const resultCreateItemQuestion = await createItemQuestionMutate({
         input: {
           courseId: item.courseId,
@@ -255,22 +297,41 @@ const createTest = async () => {
 
 const addQuestion = (): void => {
   test.value.questions.push({
+    id: '',
     description: '',
-    items: [
-      { description: '', courseId: null },
+    questionItems: [
+      { id: '', description: '', course: null, courseId: null },
     ],
   });
 };
 
 const addItem = (questionIndex: number): void => {
-  test.value.questions[questionIndex].items.push({ description: '', courseId: null });
+  test.value.questions[questionIndex].questionItems.push({ id: '', description: '', course: null, courseId: null });
 };
 
 const removeItem = (questionIndex: number, itemIndex: number): void => {
-  test.value.questions[questionIndex].items.splice(itemIndex, 1);
+  test.value.questions[questionIndex].questionItems.splice(itemIndex, 1);
 };
 
 const removeQuestion = (questionIndex: number): void => {
   test.value.questions.splice(questionIndex, 1);
 };
+
+// onMounted(() => {
+//   // if (!getTestLoading && !getTestError && getTestResult.value?.getTestById) {
+//     // test.value = deepCopyObject(getTestResult.value?.getTestById)
+//     test.value = {
+//       description: 'desc 123',
+//       questions: [
+//         {
+//           id: '',
+//           description: '',
+//           questionItems: [
+//             { id: '', description: '', course: null, courseId: null },
+//           ],
+//         },
+//       ],
+//     }
+//   // }
+// })
 </script>

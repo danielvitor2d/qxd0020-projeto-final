@@ -1,6 +1,6 @@
 <template>
   <router-link to="/" v-if="error">Erro! Volte para a Home</router-link>
-  <div v-else class="min-h-screen bg-[#F5F5F5] flex items-center justify-center">
+  <div v-else class="min-h-[calc(100vh-4rem)] bg-[#F5F5F5] flex items-center justify-center py-4">
     <div v-if="loading" class="text-gray-700 font-medium">Carregando...</div>
     <div v-else class="bg-white rounded-lg shadow-lg p-6 w-full sm:w-1/2">
       <h2 class="text-2xl font-semibold mb-4">Detalhes do Teste</h2>
