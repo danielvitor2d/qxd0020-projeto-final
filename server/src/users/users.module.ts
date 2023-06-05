@@ -1,9 +1,7 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { GraphQLModule } from '@nestjs/graphql';
 import { PassportModule } from '@nestjs/passport';
 import { PrismaService } from 'src/database/prisma.service';
 import { GqlAuthGuard } from './guards/gql-auth.guard';
@@ -28,17 +26,17 @@ import { UsersService } from './users.service';
       }),
       inject: [ConfigService],
     }),
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      driver: ApolloDriver,
-      include: [UsersModule],
-      context: ({ user }) => ({
-        user,
-      }),
-      installSubscriptionHandlers: true,
-      autoSchemaFile: true,
-      playground: true,
-      sortSchema: true,
-    }),
+    // GraphQLModule.forRoot<ApolloDriverConfig>({
+    //   driver: ApolloDriver,
+    //   include: [UsersModule],
+    //   context: ({ user }) => ({
+    //     user,
+    //   }),
+    //   installSubscriptionHandlers: true,
+    //   autoSchemaFile: true,
+    //   playground: true,
+    //   sortSchema: true,
+    // }),
     ConfigModule,
   ],
   providers: [

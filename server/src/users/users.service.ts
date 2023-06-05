@@ -1,10 +1,10 @@
-import * as argon2 from 'argon2';
-import { User } from '@prisma/client';
-import { JwtService } from '@nestjs/jwt';
 import { Injectable } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
+import * as argon2 from 'argon2';
 
-import { CreateUserInput } from './dto/create-user.input';
 import { PrismaService } from 'src/database/prisma.service';
+import { CreateUserInput } from './dto/create-user.input';
+import { User } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {

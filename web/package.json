@@ -37,11 +37,13 @@
     "vee-validate": "^4.5.8",
     "vue": "^3.3.2",
     "vue-apollo": "^3.1.0",
-    "vue-router": "^4.2.0"
+    "vue-router": "^4.2.0",
+    "vue-toastification": "2.0.0-rc.5"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
     "@tsconfig/node18": "^2.0.1",
+    "@types/": "meforma/vue-toaster",
     "@types/jsdom": "^21.1.1",
     "@types/node": "^18.16.8",
     "@vitejs/plugin-vue": "^4.2.3",
@@ -61,6 +63,7 @@
     "typescript": "~5.0.4",
     "vite": "^4.3.5",
     "vitest": "^0.31.0",
+    "vue-toaster": "link:@types/@meforma/vue-toaster",
     "vue-tsc": "^1.6.4"
   }
 }

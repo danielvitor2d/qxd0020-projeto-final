@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { DefaultApolloClient } from '@vue/apollo-composable';
 import { createPinia } from 'pinia';
 import { createApp } from 'vue';
+import Toast from "vue-toastification";
+import "vue-toastification/dist/index.css";
 
 import './assets/main.css';
 
@@ -19,6 +21,7 @@ const app = createApp(App)
 
 app.provide(DefaultApolloClient, apolloClient);
 
+app.use(Toast)
 app.component("font-awesome-icon", FontAwesomeIcon)
 
 app.use(createPinia())
