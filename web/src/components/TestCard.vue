@@ -23,17 +23,25 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, getCurrentInstance } from 'vue';
+import { getCurrentInstance } from 'vue';
+import { useRouter } from 'vue-router';
 
-defineProps({
+const props = defineProps({
   test: {
     type: Object,
     required: true,
   },
 });
 
+const router = useRouter()
+
 const viewDetails = () => {
-  // Emit an event or perform actions to view test details
+  router.push({
+    name: 'TestSingle',
+    params: {
+      id: props.test.id
+    },
+  })
 };
 
 const removeTest = () => {

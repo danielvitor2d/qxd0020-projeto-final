@@ -189,36 +189,49 @@ export class TestsService {
   async getTestById(id: string): Promise<Test | null> {
     return this.prisma.test.findUnique({
       where: { id },
-      include: { questions: { include: { questionItems: true, test: true } } },
+      include: {
+        questions: {
+          include: { questionItems: { include: { course: true } } },
+        },
+      },
     });
   }
 
   async getAllTests(): Promise<Test[]> {
     return this.prisma.test.findMany({
-      include: { questions: { include: { questionItems: true, test: true } } },
+      include: {
+        questions: {
+          include: {
+            questionItems: { include: { course: true } },
+          },
+        },
+      },
     });
   }
 
   async getQuestionById(id: string): Promise<Question | null> {
     return this.prisma.question.findUnique({
       where: { id },
-      include: { questionItems: true, test: true },
+      include: { questionItems: { include: { course: true } }, test: true },
     });
   }
 
   async getAllQuestions(): Promise<Question[]> {
     return this.prisma.question.findMany({
-      include: { questionItems: true, test: true },
+      include: { questionItems: { include: { course: true } }, test: true },
     });
   }
 
   async getItemQuestionById(id: string): Promise<ItemQuestion | null> {
-    return this.prisma.itemQuestion.findUnique({ where: { id }, include: { course: true, question: true } });
+    return this.prisma.itemQuestion.findUnique({
+      where: { id },
+      include: { question: true, course: true },
+    });
   }
 
   async getAllItemQuestions(): Promise<ItemQuestion[]> {
     return this.prisma.itemQuestion.findMany({
-      include: { course: true, question: true }
+      include: { course: true, question: true },
     });
   }
 }

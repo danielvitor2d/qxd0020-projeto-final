@@ -9,17 +9,17 @@ const router = createRouter({
       children: [
         {
           path: 'login',
-          name: 'login',
+          name: 'LoginPage',
           component: () => import('@/views/LoginView.vue')
         },
         {
           path: 'registration',
-          name: 'registration',
+          name: 'RegistrationPage',
           component: () => import('@/views/RegistrationView.vue')
         },
         {
           path: 'recover-password',
-          name: 'recover-password',
+          name: 'RecoverPasswordPage',
           component: () => import('@/views/RecoverPasswordView.vue')
         },
       ]
@@ -30,12 +30,12 @@ const router = createRouter({
       children: [
         {
           path: '/',
-          name: 'home',
+          name: 'HomePage',
           component: () => import('@/views/HomeView.vue')
         },
         {
           path: 'courses',
-          name: 'courses',
+          name: 'CoursesPage',
           component: () => import('@/views/CoursesView.vue')
         },
       ]
@@ -46,18 +46,23 @@ const router = createRouter({
       children: [
         {
           path: 'tests',
-          name: 'tests',
+          name: 'TestsPage',
           component: () => import('@/views/TestsView.vue')
         },
         {
-          path: 'create-test',
-          name: 'create-test',
-          component: () => import('@/views/CreateTestView.vue')
+          path: 'test/:id',
+          name: 'TestSingle',
+          component: () => import('@/views/TestView.vue')
         },
         {
-          path: 'edit-test',
-          name: 'edit-test',
-          component: () => import('@/views/EditTestView.vue')
+          path: 'test/:id/edit',
+          name: 'EditTestSingle',
+          component: () => import('@/views/TestView.vue')
+        },
+        {
+          path: 'create-test',
+          name: 'CreateTestPage',
+          component: () => import('@/views/CreateTestView.vue')
         },
       ]
     },
