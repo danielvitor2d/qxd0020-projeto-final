@@ -1,6 +1,8 @@
 <!-- eslint-disable -->
 <template>
-  <div class="flex items-center justify-center h-screen bg-gradient-to-br from-blue-600 to-indigo-700">
+  <div
+    class="flex items-center justify-center h-screen bg-gradient-to-br from-blue-600 to-indigo-700"
+  >
     <div class="w-[30rem] bg-white rounded-xl shadow-xl p-10">
       <h1 class="text-4xl font-semibold text-gray-900 mb-8">Cadastrar</h1>
       <form class="space-y-6">
@@ -66,12 +68,11 @@
 </template>
 
 <script setup lang="ts">
-import { ErrorMessage, useForm } from 'vee-validate';
-  
-  const { handleSubmit, values, errors } = useForm();
-  const onSubmit = handleSubmit((values) => {
-    // Handle form submission here
-    console.log(values);
-  });
+import { ErrorMessage, useForm } from 'vee-validate'
 
+const { values, errors } = useForm()
+// const onSubmit = handleSubmit((values) => {
+//   // Handle form submission here
+//   console.log(values);
+// });
 </script>

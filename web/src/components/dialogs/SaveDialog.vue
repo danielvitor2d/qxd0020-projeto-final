@@ -30,14 +30,14 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue';
+import { ref } from 'vue'
 
-  const showDialog = ref(false);
-  const message = ref('Click the button to open the dialog');
+const showDialog = ref(false)
+const message = ref('Click the button to open the dialog')
 
-  function confirm() {
-    message.value = 'Confirmed!';
-    showDialog.value = false;
-    // Do something else, like deleting a record or navigating to a new page
-  }
+function confirm() {
+  message.value = 'Confirmed!'
+  showDialog.value = false
+  // Do something else, like deleting a record or navigating to a new page
+}
 </script>

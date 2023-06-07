@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import QuestionItem from '../components/QuestionItem.vue'
+import { ref } from 'vue'
 
+// eslint-disable-next-line vue/no-setup-props-destructure
 const { question, onDelete } = defineProps<{
   question: {
-    id: number,
+    id: number
     items: Array<{
-      id: number,
-      label: string,
-      course: string,
+      id: number
+      label: string
+      course: string
     }>
-  },
+  }
   onDelete: (id: number) => void
 }>()
 
 const items = ref(question.items)
 
-const handleDelete = (id: number) => {
-  items.value = items.value.filter(({ id: _id }) => _id !== id)
-  onDelete(id)
-}
+// const handleDelete = (id: number) => {
+//   items.value = items.value.filter(({ id: _id }) => _id !== id)
+//   onDelete(id)
+// }
 
 const handleAddItem = () => {
   items.value = [
@@ -31,7 +31,6 @@ const handleAddItem = () => {
     }
   ]
 }
-
 </script>
 
 <template>
@@ -42,27 +41,21 @@ const handleAddItem = () => {
         type="text"
       />
       <button class="delete-button" @click="() => onDelete(question.id)">
-        <font-awesome-icon
-          class="w-fit text-red-600"
-          icon="trash-can"
-        />
+        <font-awesome-icon class="w-fit text-red-600" icon="trash-can" />
       </button>
     </div>
     <div class="w-full flex flex-col gap-3">
-      <QuestionItem
+      <!-- <QuestionItem
         :item="item"
         v-for="item in items"
         :on-delete="handleDelete"
-      />
+      /> -->
     </div>
     <button
       class="add-button flex flex-row gap-3 mt-3 px-4 py-2 items-center justify-center text-[#007AC2] rounded-md hover:bg-[#2ea6eb] hover:text-white"
       @click="() => handleAddItem()"
     >
-      <font-awesome-icon
-        class="w-fit"
-        icon="plus"
-      />
+      <font-awesome-icon class="w-fit" icon="plus" />
       Adicionar opção
     </button>
   </div>

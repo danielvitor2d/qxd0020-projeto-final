@@ -21,7 +21,7 @@ const router = createRouter({
           path: 'recover-password',
           name: 'RecoverPasswordPage',
           component: () => import('@/views/RecoverPasswordView.vue')
-        },
+        }
       ]
     },
     {
@@ -37,7 +37,7 @@ const router = createRouter({
           path: 'courses',
           name: 'CoursesPage',
           component: () => import('@/views/CoursesView.vue')
-        },
+        }
       ]
     },
     {
@@ -63,9 +63,9 @@ const router = createRouter({
           path: 'test/create',
           name: 'CreateTestPage',
           component: () => import('@/views/SaveTestView.vue')
-        },
+        }
       ]
-    },
+    }
   ]
 })
 

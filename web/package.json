@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only",
+    "serve": "",
+    "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
     "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "type-check": "vue-tsc --noEmit -p --composite false",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
@@ -29,7 +30,7 @@
     "apollo-link-http": "^1.5.17",
     "autoprefixer": "^10.4.14",
     "axios": "^1.4.0",
-    "graphql": "^16.6.0",
+    "graphql": "^15.0.0",
     "jest": "^29.5.0",
     "pinia": "^2.0.36",
     "postcss": "^8.4.23",
@@ -42,8 +43,6 @@
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
-    "@tsconfig/node18": "^2.0.1",
-    "@types/": "meforma/vue-toaster",
     "@types/jsdom": "^21.1.1",
     "@types/node": "^18.16.8",
     "@vitejs/plugin-vue": "^4.2.3",
@@ -52,7 +51,6 @@
     "@vue/eslint-config-typescript": "^11.0.3",
     "@vue/test-utils": "^2.3.2",
     "@vue/tsconfig": "^0.4.0",
-    "cypress": "^12.12.0",
     "eslint": "^8.39.0",
     "eslint-plugin-cypress": "^2.13.3",
     "eslint-plugin-vue": "^9.11.0",
@@ -63,7 +61,6 @@
     "typescript": "~5.0.4",
     "vite": "^4.3.5",
     "vitest": "^0.31.0",
-    "vue-toaster": "link:@types/@meforma/vue-toaster",
     "vue-tsc": "^1.6.4"
   }
 }

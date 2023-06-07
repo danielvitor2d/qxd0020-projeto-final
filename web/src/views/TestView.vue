@@ -4,12 +4,12 @@
     <div v-if="loading" class="text-gray-700 font-medium">Carregando...</div>
     <div v-else class="bg-white rounded-lg shadow-lg p-6 w-full sm:w-1/2">
       <h2 class="text-2xl font-semibold mb-4">Detalhes do Teste</h2>
-      
+
       <div class="mb-6">
         <h3 class="text-lg font-semibold mb-2">Descrição:</h3>
         <p class="text-gray-800">{{ test?.description }}</p>
       </div>
-      
+
       <div class="mb-6">
         <h3 class="text-lg font-semibold mb-2">Perguntas:</h3>
         <ul class="list-disc pl-6">
@@ -24,8 +24,11 @@
           </li>
         </ul>
       </div>
-      
-      <button @click="onEdit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded">
+
+      <button
+        @click="onEdit"
+        class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded"
+      >
         Editar
       </button>
     </div>
@@ -33,10 +36,10 @@
 </template>
 
 <script setup lang="ts">
-import { useQuery } from '@vue/apollo-composable';
-import { gql } from 'apollo-boost';
-import { computed } from 'vue';
-import { useRouter } from 'vue-router';
+import { useQuery } from '@vue/apollo-composable'
+import { gql } from 'apollo-boost'
+import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 
 const GET_TEST_QUERY = gql`
   query GetTestById($id: String!) {
@@ -54,7 +57,7 @@ const GET_TEST_QUERY = gql`
       }
     }
   }
-`;
+`
 
 interface Course {
   name: string
@@ -65,23 +68,30 @@ interface QueryResult {
 }
 
 interface Item {
-  id: string;
-  description: string;
+  id: string
+  description: string
   course: Course
 }
 
 interface Question {
-  id: string;
-  description: string;
-  questionItems: Item[];
+  id: string
+  description: string
+  questionItems: Item[]
 }
 
 interface Test {
-  description: string;
-  questions: Question[];
+  description: string
+  questions: Question[]
 }
 
-const { currentRoute: { value: { params: { id } } }, push } = useRouter()
+const {
+  currentRoute: {
+    value: {
+      params: { id }
+    }
+  },
+  push
+} = useRouter()
 
 const { result, loading, error } = useQuery<QueryResult>(GET_TEST_QUERY, {
   id: id as string

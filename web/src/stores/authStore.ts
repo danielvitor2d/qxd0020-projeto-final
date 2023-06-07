@@ -7,7 +7,7 @@ export const useAuthStore = defineStore('auth', {
   getters: {
     isLogged(): boolean {
       return this.token === null ? false : true
-    },
+    }
   },
   actions: {
     setToken(token: string) {

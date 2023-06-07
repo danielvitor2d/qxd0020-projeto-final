@@ -1,0 +1,30 @@
+<template>
+  <div class="flex items-center justify-center h-screen bg-gray-100">
+    <div class="text-center">
+      <div class="inline-flex items-center justify-center mb-4">
+        <svg
+          class="animate-spin -ml-1 mr-3 h-5 w-5 text-gray-900"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+          ></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647zM12 20c3.042 0 5.824-1.135 7.938-3l-2.647-3A7.962 7.962 0 0112 16v4zm7.938-11A7.962 7.962 0 0116 4h-4v4c0 2.21.896 4.209 2.343 5.657l3-2.647zM12 4v4H8c-2.209 0-4-1.791-4-4H12zm-8.938 7A7.962 7.962 0 014 12H0c0-3.042 1.135-5.824 3-7.938l3 2.647zM12 4H8V0c2.209 0 4 1.791 4 4H12z"
+          ></path>
+        </svg>
+        <span class="text-gray-900 text-lg font-semibold">Carregando...</span>
+      </div>
+      <p class="text-gray-600">Por favor, espere enquanto carregamos sua tela.</p>
+    </div>
+  </div>
+</template>
