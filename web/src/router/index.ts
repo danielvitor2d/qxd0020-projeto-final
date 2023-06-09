@@ -1,3 +1,4 @@
+import { useAuthStore } from '@/stores/authStore'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -64,8 +65,21 @@ const router = createRouter({
           name: 'CreateTestPage',
           component: () => import('@/views/SaveTestView.vue')
         }
-      ]
+      ],
+      meta: {
+        requiresAuth: true
+      }
     }
+  ]
+})
+
+router.beforeEach((to, from, next) => {
+  const { isLogged } = useAuthStore()
+
+  if (to.matched.some(record => record.meta.requiresAuth) && !isLogged) {
+    next('/auth/login')
+  } else [
+    next()
   ]
 })
 

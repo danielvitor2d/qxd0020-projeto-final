@@ -68,7 +68,7 @@
 </template>
 
 <script setup lang="ts">
-import { ErrorMessage, useForm } from 'vee-validate'
+import { ErrorMessage, useForm } from 'vee-validate';
 
 const { values, errors } = useForm()
 // const onSubmit = handleSubmit((values) => {
