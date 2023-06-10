@@ -5,7 +5,7 @@
       {{ isEdit ? 'Editar Teste Vocacional' : 'Criar Teste Vocacional' }}
     </h1>
     <form class="w-3/5" @submit.prevent.stop="saveTest">
-      <div class="mb-4">
+      <div class="mb-4 animate-fadeIn">
         <label for="title" class="block text-gray-700 font-semibold mb-2">Título do Teste:</label>
         <input
           v-model="test.description"
@@ -14,7 +14,7 @@
           class="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
-      <div>
+      <div class="animate-fadeIn">
         <div v-for="(question, index) in test.questions" :key="index" class="mb-4">
           <div class="bg-gray-100 rounded-lg shadow-lg p-6">
             <h2 class="mb-2 font-bold">Pergunta {{ index + 1 }}</h2>
@@ -75,7 +75,7 @@
           Adicionar Pergunta
         </button>
       </div>
-      <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-8">
+      <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-8 animate-fadeIn">
         {{ isEdit ? 'Salvar alterações' : 'Criar Teste' }}
       </button>
     </form>

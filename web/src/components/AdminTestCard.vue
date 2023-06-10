@@ -9,13 +9,13 @@
           class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mr-2"
           @click="viewDetails"
         >
-          Ver respostas
+          Ver detalhes
         </button>
         <button
-          class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mt-2"
+          class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
           @click="removeTest"
         >
-          Responder
+          Remover
         </button>
       </div>
     </div>

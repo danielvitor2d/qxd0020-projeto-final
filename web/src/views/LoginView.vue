@@ -6,7 +6,7 @@
       <h1 class="text-4xl font-semibold text-gray-900 mb-8">Login</h1>
 
       <Form @submit="onSubmit" class="flex flex-col gap-4">
-        <div class="flex flex-col gap-1">
+        <div class="flex flex-col gap-1 animate-fadeIn">
           <Field
             name="userEmail"
             type="email"
@@ -18,7 +18,7 @@
           <ErrorMessage class="text-sm text-red-500" name="userEmail" />
         </div>
 
-        <div class="flex flex-col gap-1">
+        <div class="flex flex-col gap-1 animate-fadeIn">
           <Field
             name="password"
             type="password"

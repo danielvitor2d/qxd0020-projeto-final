@@ -58,10 +58,10 @@ import { useQuery } from '@vue/apollo-composable';
 import { gql } from 'apollo-boost';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { POSITION, useToast } from 'vue-toastification';
 
 import ErrorPage from '@/components/ErrorPage.vue';
 import LoadingComponent from '@/components/LoadingComponent.vue';
-import { POSITION, useToast } from 'vue-toastification';
 
 const toast = useToast()
 

@@ -6,7 +6,7 @@
       <img class="w-full" src="../assets/courses.svg" alt="background" />
     </div>
 
-    <section class="w-9/12 mt-6 flex flex-col items-start justify-center">
+    <section class="animate-fadeIn w-9/12 mt-6 flex flex-col items-start justify-center">
       <header>
         <h1 class="font-bold text-3xl text-gray-800">Cursos do Campus de Quixadá</h1>
       </header>

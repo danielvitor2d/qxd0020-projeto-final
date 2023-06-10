@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+const router = useRouter()
+</script>
 
 <template>
   <main class="pb-16">
@@ -7,13 +11,14 @@
         <img class="w-full z-0" src="../assets/main.svg" alt="background" />
 
         <button
-          class="z-10 top-52 left-16 bg-[#FFF] text-[#007AC2] py-[0.5rem] px-[1rem] rounded-sm font-bold hover:bg-[#007AC2] hover:text-[#FFF] active:bg-[#4299e1] active:text-[#FFF] absolute"
+          @click="() => router.push('/tests')"
+          class="animate-fadeIn z-10 top-52 left-16 bg-[#FFF] text-[#007AC2] py-[0.5rem] px-[1rem] rounded-sm font-bold hover:bg-[#007AC2] hover:text-[#FFF] active:bg-[#4299e1] active:text-[#FFF] absolute"
         >
           Realizar teste vocacional
         </button>
       </div>
 
-      <article class="w-9/12 mt-6">
+      <article class="animate-fadeIn w-9/12 mt-6">
         <h1 class="font-bold text-3xl text-gray-800">O que é um Teste Vocacional?</h1>
 
         <p class="mt-2 font-normal text-lg text-gray-700">
