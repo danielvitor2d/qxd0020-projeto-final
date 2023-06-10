@@ -83,11 +83,15 @@ const onSubmit = async () => {
       return
     }
 
+    toast.success('Autorizado. Redirecionando para tela inicial.', {
+      position: POSITION.BOTTOM_RIGHT,
+    })
+
     const authStore = useAuthStore()
 
     authStore.setToken(access_token)
 
-    router.replace('/')
+    setTimeout(() => router.replace('/'), 1000)
   } catch (error) {
     console.log(error)
   }

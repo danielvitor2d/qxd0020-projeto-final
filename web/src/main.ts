@@ -1,5 +1,5 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faPlus, faTrashCan, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faPlus, faTrashCan, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { DefaultApolloClient } from '@vue/apollo-composable'
 import { createPinia } from 'pinia'
@@ -16,6 +16,7 @@ import apolloClient from './services/apollo'
 library.add(faTrashCan)
 library.add(faXmark)
 library.add(faPlus)
+library.add(faCheck)
 
 const app = createApp(App)
 

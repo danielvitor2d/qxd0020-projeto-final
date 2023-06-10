@@ -187,7 +187,7 @@ export class TestsService {
   }
 
   async getTestById(id: string): Promise<Test | null> {
-    return this.prisma.test.findUnique({
+    return this.prisma.test.findUniqueOrThrow({
       where: { id },
       include: {
         questions: {
