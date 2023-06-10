@@ -45,7 +45,7 @@
             </div>
           </Transition>
         </div>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" @click="finishTest">
           Finalizar teste
         </button>
       </div>
@@ -61,6 +61,9 @@ import { useRouter } from 'vue-router';
 
 import ErrorPage from '@/components/ErrorPage.vue';
 import LoadingComponent from '@/components/LoadingComponent.vue';
+import { POSITION, useToast } from 'vue-toastification';
+
+const toast = useToast()
 
 const GET_TEST_QUERY = gql`
   query GetTestById($id: String!) {
@@ -141,6 +144,28 @@ function setActiveQuestion(index: number) {
 
 function handleSelectItem(option: Item) {
   questions.value[activeQuestionIndex.value].selectedOption = option
+}
+
+function checkAnswers() {
+  if (questions.value.some(question => !question.selectedOption)) {
+    return false
+  }
+
+  return true
+}
+
+function finishTest() {
+  if (!checkAnswers()) {
+    return toast.error('Por favor, responda todas as questões.', {
+      position: POSITION.BOTTOM_RIGHT
+    })
+  }
+
+  for (const question of questions.value) {
+    toast.success(`Pergunta: ${question.description}. Resposta: ${question.selectedOption?.description}`, {
+      position: POSITION.BOTTOM_RIGHT
+    })
+  }
 }
 
 </script>
