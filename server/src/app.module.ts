@@ -6,13 +6,17 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { AppController } from './app.controller';
 import { PrismaService } from './database/prisma.service';
 import { TestsModule } from './tests/tests.module';
+import { UserResponseTestModule } from './user-response-test/user-response-test.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [UsersModule, TestsModule,
+  imports: [
+    UsersModule,
+    UserResponseTestModule,
+    TestsModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      include: [TestsModule, UsersModule],
+      include: [TestsModule, UsersModule, UserResponseTestModule],
       context: ({ tests }) => ({
         tests,
       }),
@@ -20,7 +24,8 @@ import { UsersModule } from './users/users.module';
       autoSchemaFile: true,
       playground: true,
       sortSchema: true,
-    }),],
+    }),
+  ],
   controllers: [AppController],
   providers: [PrismaService, ConfigService],
 })

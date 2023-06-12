@@ -5,6 +5,11 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator erd {
+  provider = "prisma-erd-generator"
+  theme    = "forest"
+}
+
 datasource db {
   provider          = "postgresql"
   url               = env("DATABASE_URL")
@@ -21,6 +26,8 @@ model User {
   createdAt      String
   updatedAt      String
   deletedAt      String?
+
+  UserResponseTest UserResponseTest[]
 }
 
 model Course {
@@ -36,6 +43,8 @@ model Test {
   description String
 
   questions Question[]
+
+  UserResponseTest UserResponseTest[]
 }
 
 model Question {
@@ -57,4 +66,32 @@ model ItemQuestion {
 
   course   Course @relation(fields: [courseId], references: [id])
   courseId String
+
+  Response Response[]
+}
+
+model UserResponseTest {
+  user   User   @relation(fields: [userId], references: [id])
+  userId String
+
+  test   Test   @relation(fields: [testId], references: [id])
+  testId String
+
+  responses Response[]
+
+  createdAt DateTime
+
+  @@id([userId, createdAt, testId])
+}
+
+model Response {
+  id String @id @default(uuid())
+
+  itemQuestionId String
+  itemQuestion   ItemQuestion @relation(fields: [itemQuestionId], references: [id])
+
+  UserResponseTest          UserResponseTest? @relation(fields: [userResponseTestUserId, userResponseTestCreatedAt, userResponseTestTestId], references: [userId, createdAt, testId])
+  userResponseTestTestId    String?
+  userResponseTestUserId    String?
+  userResponseTestCreatedAt DateTime?
 }
