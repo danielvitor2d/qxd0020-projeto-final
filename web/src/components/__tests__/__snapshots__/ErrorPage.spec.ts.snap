@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ComponentName > renders correctly 1`] = `
+"<div class=\\"flex items-center justify-center h-screen bg-gray-100\\">
+  <div class=\\"text-center\\"><svg class=\\"h-16 w-16 text-red-500 mx-auto mb-4\\" xmlns=\\"http://www.w3.org/2000/svg\\" fill=\\"none\\" viewBox=\\"0 0 24 24\\">
+      <path fill-rule=\\"evenodd\\" clip-rule=\\"evenodd\\" d=\\"M12 21c-4.963 0-9-4.037-9-9s4.037-9 9-9 9 4.037 9 9-4.037 9-9 9zm0-2a7 7 0 110-14 7 7 0 010 14zm0-7a1 1 0 00-1 1v3a1 1 0 102 0v-3a1 1 0 00-1-1zm0-5a1 1 0 100 2 1 1 0 000-2z\\" fill=\\"currentColor\\"></path>
+    </svg>
+    <h1 class=\\"text-2xl font-semibold mb-2\\">Ops! Algo parece errado.</h1>
+    <p class=\\"text-gray-600\\">Something went wrong</p>
+  </div>
+</div>"
+`;

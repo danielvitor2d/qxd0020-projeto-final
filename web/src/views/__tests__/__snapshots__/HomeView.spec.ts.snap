@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`HomeView > renders correctly 1`] = `
+"<main class=\\"h-[calc(100vh-4rem)] pb-16\\">
+  <section class=\\"h-full flex flex-col items-center justify-between\\">
+    <div class=\\"w-full\\"><img class=\\"w-full z-0\\" src=\\"/src/assets/main.svg\\" alt=\\"background\\"><button class=\\"animate-fadeIn z-10 top-52 left-16 bg-[#FFF] text-[#007AC2] py-[0.5rem] px-[1rem] rounded-sm font-bold hover:bg-[#007AC2] hover:text-[#FFF] active:bg-[#4299e1] active:text-[#FFF] absolute\\"> Realizar teste vocacional </button></div>
+    <article class=\\"animate-fadeIn w-9/12 mt-4\\">
+      <h1 class=\\"font-bold text-4xl text-gray-800\\">O que é um Teste Vocacional?</h1>
+      <p class=\\"mt-2 font-normal text-2xl text-gray-700\\"> Um teste vocacional é uma ferramenta utilizada para ajudar as pessoas a descobrirem suas habilidades, interesses e aptidões, a fim de tomar decisões mais informadas sobre suas carreiras e áreas de estudo. Também conhecido como teste de orientação vocacional, esse tipo de teste busca identificar as áreas profissionais que mais se alinham com as características e preferências individuais de uma pessoa. O teste vocacional geralmente consiste em uma série de perguntas e atividades que exploram diferentes aspectos da personalidade, interesses, habilidades, valores e metas pessoais. Ao realizar um teste vocacional, os indivíduos podem obter uma compreensão mais clara de si mesmos e de suas inclinações profissionais. Os resultados do teste podem sugerir áreas específicas de trabalho ou estudo que sejam compatíveis com as características e interesses identificados. Essas informações podem servir como um guia útil para a escolha de uma carreira, a definição de metas educacionais ou a exploração de oportunidades profissionais. </p>
+    </article>
+  </section>
+</main>"
+`;

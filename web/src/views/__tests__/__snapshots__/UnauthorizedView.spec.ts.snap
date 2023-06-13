@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Unauthorized > renders correctly 1`] = `
+"<div class=\\"bg-[#FEFEFE] min-h-screen flex flex-col items-center justify-center\\">
+  <div class=\\"text-black text-4xl mb-6\\">
+    <font-awesome-icon icon=\\"fa-lock\\"></font-awesome-icon> Acesso não autorizado
+  </div>
+  <div class=\\"text-black text-lg text-center\\"> Desculpe, mas você não está autorizado a acessar esta página. Entre em contato com o administrador para obter mais assistência. </div>
+  <div class=\\"text-black text-lg text-center\\"> Retornar para a <b>
+      <router-link to=\\"/\\">Página Inicial</router-link>
+    </b></div>
+</div>"
+`;

@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`QuestionView > renders correctly 1`] = `
+"<div class=\\"w-full h-fit p-5 bg-[#F5F5F5] border-[1px] border-gray-400 rounded-md\\">
+  <div class=\\"w-full mb-6 flex flex-row items-center justify-center gap-10\\"><input class=\\"w-fit flex-1 bg-[#F5F5F5] font-normal text-sm px-1 py-2 border-[1px] border-gray-400\\" type=\\"text\\"><button class=\\"delete-button\\">
+      <font-awesome-icon class=\\"w-fit text-red-600\\" icon=\\"trash-can\\"></font-awesome-icon>
+    </button></div>
+  <div class=\\"w-full flex flex-col gap-3\\">
+    <!-- <QuestionItem
+        :item=\\"item\\"
+        v-for=\\"item in items\\"
+        :on-delete=\\"handleDelete\\"
+      /> -->
+  </div><button class=\\"add-button flex flex-row gap-3 mt-3 px-4 py-2 items-center justify-center text-[#007AC2] rounded-md hover:bg-[#2ea6eb] hover:text-white\\">
+    <font-awesome-icon class=\\"w-fit\\" icon=\\"plus\\"></font-awesome-icon> Adicionar opção
+  </button>
+</div>"
+`;

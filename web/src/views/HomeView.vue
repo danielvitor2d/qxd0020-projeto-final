@@ -5,8 +5,8 @@ const router = useRouter()
 </script>
 
 <template>
-  <main class="pb-16">
-    <section class="flex flex-col items-center">
+  <main class="h-[calc(100vh-4rem)] pb-16">
+    <section class="h-full flex flex-col items-center justify-between">
       <div class="w-full">
         <img class="w-full z-0" src="../assets/main.svg" alt="background" />
 
@@ -18,42 +18,15 @@ const router = useRouter()
         </button>
       </div>
 
-      <article class="animate-fadeIn w-9/12 mt-6">
-        <h1 class="font-bold text-3xl text-gray-800">O que é um Teste Vocacional?</h1>
+      <article class="animate-fadeIn w-9/12 mt-4">
+        <h1 class="font-bold text-4xl text-gray-800">O que é um Teste Vocacional?</h1>
 
-        <p class="mt-2 font-normal text-lg text-gray-700">
-          Mussum Ipsum, cacilds vidis litro abertis. Paisis, filhis, espiritis santis. Em pé sem
-          cair, deitado sem dormir, sentado sem cochilar e fazendo pose. Si u mundo tá muito
-          paradis? Toma um mé que o mundo vai girarzis! Vehicula non. Ut sed ex eros. Vivamus sit
-          amet nibh non tellus tristique interdum. Mussum Ipsum, cacilds vidis litro abertis.
-          Cevadis im ampola pa arma uma pindureta. Interessantiss quisso pudia ce receita de bolis,
-          mais bolis eu num gostis. Leite de capivaris, leite de mula manquis sem cabeça. Suco de
-          cevadiss deixa as pessoas mais interessantis. Mussum Ipsum, cacilds vidis litro abertis.
-          Atirei o pau no gatis, per gatis num morreus. Em pé sem cair, deitado sem dormir, sentado
-          sem cochilar e fazendo pose. Mauris nec dolor in eros commodo tempor. Aenean aliquam
-          molestie leo, vitae iaculis nisl. Mé faiz elementum girarzis, nisi eros vermeio.
+        <p class="mt-2 font-normal text-2xl text-gray-700">
+          Um teste vocacional é uma ferramenta utilizada para ajudar as pessoas a descobrirem suas habilidades, interesses e aptidões, a fim de tomar decisões mais informadas sobre suas carreiras e áreas de estudo. Também conhecido como teste de orientação vocacional, esse tipo de teste busca identificar as áreas profissionais que mais se alinham com as características e preferências individuais de uma pessoa.
+          
+          O teste vocacional geralmente consiste em uma série de perguntas e atividades que exploram diferentes aspectos da personalidade, interesses, habilidades, valores e metas pessoais. Ao realizar um teste vocacional, os indivíduos podem obter uma compreensão mais clara de si mesmos e de suas inclinações profissionais. Os resultados do teste podem sugerir áreas específicas de trabalho ou estudo que sejam compatíveis com as características e interesses identificados. Essas informações podem servir como um guia útil para a escolha de uma carreira, a definição de metas educacionais ou a exploração de oportunidades profissionais.
         </p>
-
-        <section>
-          <h2 class="mt-6 font-bold text-3xl text-gray-800">Lore ipsum dolor sit amet</h2>
-
-          <p class="mt-2 font-normal text-lg text-gray-700">
-            Mussum Ipsum, cacilds vidis litro abertis. Paisis, filhis, espiritis santis. Em pé sem
-            cair, deitado sem dormir, sentado sem cochilar e fazendo pose. Si u mundo tá muito
-            paradis? Toma um mé que o mundo vai girarzis! Vehicula non. Ut sed ex eros. Vivamus sit
-            amet nibh non tellus tristique interdum. Mussum Ipsum, cacilds vidis litro abertis.
-            Cevadis im ampola pa arma uma pindureta. Interessantiss quisso pudia ce receita de
-            bolis, mais bolis eu num gostis. Leite de capivaris, leite de mula manquis sem cabeça.
-            Suco de cevadiss deixa as pessoas mais interessantis. Mussum Ipsum, cacilds vidis litro
-            abertis. Atirei o pau no gatis, per gatis num morreus. Em pé sem cair, deitado sem
-            dormir, sentado sem cochilar e fazendo pose. Mauris nec dolor in eros commodo tempor.
-            Aenean aliquam molestie leo, vitae iaculis nisl. Mé faiz elementum girarzis, nisi eros
-            vermeio. Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu
-            sit. Vide electram sadipscing et per. Suco de cevadiss deixa as pessoas mais
-            interessantis. Mauris nec dolor in eros commodo tempor. Aenean aliquam molestie leo,
-            vitae iaculis nisl. Si num tem leite então bota uma pinga aí cumpadi!
-          </p>
-        </section>
+        
       </article>
     </section>
   </main>

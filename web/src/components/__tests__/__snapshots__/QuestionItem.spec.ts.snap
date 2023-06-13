@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`QuestionItemVue > renders correctly 1`] = `
+"<div class=\\"w-full flex flex-row items-center justify-between\\">
+  <p class=\\"flex-1\\">Test Label</p>
+  <p class=\\"mr-4\\">Test Course</p><button>
+    <font-awesome-icon icon=\\"fa-xmark\\"></font-awesome-icon>
+  </button>
+</div>"
+`;
