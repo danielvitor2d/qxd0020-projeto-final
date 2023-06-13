@@ -45,10 +45,20 @@ const router = createRouter({
           component: () => import('@/views/TestsView.vue')
         },
         {
+          path: 'test/:id/history',
+          name: 'AnswersHistoryView',
+          component: () => import('@/views/AnswersHistoryView.vue')
+        },
+        {
           path: 'test/:id/answer-test',
           name: 'AnswerTestPage',
           component: () => import('@/views/AnswerTestView.vue')
-        }
+        },
+        {
+          path: 'result/:userId/:testId/:createdAt',
+          name: 'ResultUserTestPage',
+          component: () => import('@/views/ResultUserTestPage.vue')
+        },
       ]
     },
     {

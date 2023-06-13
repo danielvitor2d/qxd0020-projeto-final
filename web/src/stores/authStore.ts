@@ -1,4 +1,10 @@
-import { defineStore } from 'pinia'
+import jwtDecode from 'jwt-decode';
+import { defineStore } from 'pinia';
+
+interface Token {
+  sub: string;
+  email: string;
+}
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -17,6 +23,12 @@ export const useAuthStore = defineStore('auth', {
     clearToken() {
       this.token = null
       localStorage.removeItem('token')
+    },
+    getUserIdIfIsLoggedIn() {
+      if (!this.token) return null
+      const decodedToken = jwtDecode(this.token) as Token;
+      const userId = decodedToken.sub;
+      return userId;
     }
   }
 })

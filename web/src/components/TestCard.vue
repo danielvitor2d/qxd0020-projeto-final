@@ -7,13 +7,13 @@
       <div>
         <button
           class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mr-2"
-          @click="viewDetails"
+          @click="viewAnswers"
         >
-          Ver respostas
+          Minhas respostas
         </button>
         <button
           class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded mt-2"
-          @click="removeTest"
+          @click="answerTest"
         >
           Responder
         </button>
@@ -23,7 +23,6 @@
 </template>
 
 <script setup lang="ts">
-import { getCurrentInstance } from 'vue';
 import { useRouter } from 'vue-router';
 
 const props = defineProps({
@@ -35,17 +34,16 @@ const props = defineProps({
 
 const router = useRouter()
 
-const viewDetails = () => {
+const viewAnswers = () => {
   router.push({
-    name: 'TestSingle',
+    name: 'AnswersHistoryView',
     params: {
       id: props.test.id
     }
   })
 }
 
-const removeTest = () => {
-  const instance = getCurrentInstance()
-  instance?.emit('remove')
+const answerTest = () => {
+  router.push(`test/${props.test.id}/answer-test`)
 }
 </script>

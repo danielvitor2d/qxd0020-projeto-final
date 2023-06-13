@@ -2,7 +2,8 @@
   <LoadingComponent v-if="loading">Carregando...</LoadingComponent>
   <div v-else class="container mx-auto py-8">
     <h1 class="text-3xl font-semibold mb-8">Visualizar Testes</h1>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+    <EmptyData v-if="tests?.length === 0"></EmptyData>
+    <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       <AdminTestCard v-for="test in tests" :key="test.id as string" :test="test" class="animate-fadeIn"></AdminTestCard>
     </div>
     <button
@@ -21,6 +22,7 @@ import { computed, onBeforeMount } from 'vue'
 import { useRouter } from 'vue-router'
 
 import AdminTestCard from '@/components/AdminTestCard.vue'
+import EmptyData from '@/components/EmptyData.vue'
 import LoadingComponent from '@/components/LoadingComponent.vue'
 import type { Test } from '@/types/test'
 
