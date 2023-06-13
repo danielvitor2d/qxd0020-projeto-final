@@ -84,6 +84,12 @@ onUnmounted(() => {
             >
               Perfil do Usuário
             </router-link>
+            <router-link
+              to="/tests/history"
+              class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+            >
+              Histórico
+            </router-link>
             <router-link to="/admin/tests" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
               Testes
             </router-link>
@@ -111,7 +117,7 @@ onUnmounted(() => {
               Perfil do Usuário
             </router-link>
             <router-link
-              to="/admin/edit-test"
+              to="/tests/history"
               class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
             >
               Histórico

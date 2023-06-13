@@ -231,7 +231,7 @@ export class TestsService {
 
   async getAllItemQuestions(): Promise<ItemQuestion[]> {
     return this.prisma.itemQuestion.findMany({
-      include: { course: true, question: true },
+      include: { question: true, course: true },
     });
   }
 }

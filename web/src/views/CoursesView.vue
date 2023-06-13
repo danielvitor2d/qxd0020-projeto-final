@@ -17,16 +17,37 @@
         </hgroup>
 
         <p class="mt-2 font-normal text-lg text-gray-700">
-          Mussum Ipsum, cacilds vidis litro abertis. Paisis, filhis, espiritis santis.Em pé sem
-          cair, deitado sem dormir, sentado sem cochilar e fazendo pose.Si u mundo tá muito paradis?
-          Toma um mé que o mundo vai girarzis!Vehicula non. Ut sed ex eros. Vivamus sit amet nibh
-          non tellus tristique interdum. Mussum Ipsum, cacilds vidis litro abertis. Cevadis im
-          ampola pa arma uma pindureta.Interessantiss quisso pudia ce receita de bolis, mais bolis
-          eu num gostis.Leite de capivaris, leite de mula manquis sem cabeça.Suco de cevadiss deixa
-          as pessoas mais interessantis. Mussum Ipsum, cacilds vidis litro abertis. Atirei o pau no
-          gatis, per gatis num morreus.Em pé sem cair, deitado sem dormir, sentado sem cochilar e
-          fazendo pose.Mauris nec dolor in eros commodo tempor. Aenean aliquam molestie leo, vitae
-          iaculis nisl.Mé faiz elementum girarzis, nisi eros vermeio.
+          Os avanços da Tecnologia da Informação e Comunicação (TIC) têm impulsionado uma demanda pelo desenvolvimento de sistemas de software mais complexos, confiáveis e de qualidade. Engenharia de Software é a disciplina, em ciência da computação, que se dedica ao projeto, desenvolvimento e manutenção de software com maior qualidade, confiabilidade, facilidade de manutenção, redução de custos e tempo. Tais aspectos são desejáveis às soluções de software por questões socioeconômicas e de alocação de recursos, mas consegui-las muitas vezes consiste em um desafio. As atividades do profissional de engenharia de software perfazem o ciclo de vida completo de um software, desde sua concepção, projeto, construção e manutenção. Para tanto, os profissionais precisam dominar conhecimentos gerais de computação, conhecimento específicos da engenharia de software, assim como métodos, processos e ferramentas para viabilizar e otimizar o desenvolvimento.
+
+          O curso de Bacharelado em Engenharia de Software da UFC – Campus Quixadá é um dos pioneiros no Brasil, sendo este o único no estado do Ceará. Nossos alunos recebem formação sólida, incluindo os conceitos-chave de engenharia de software e as principais técnicas para projeto, desenvolvimento, manutenção e testes de software. O mercado de trabalho desta área evolui rapidamente e tem demanda constante por profissionais. Aqueles com boas habilidades de comunicação e perfil empreendedor encontram excelentes oportunidades no mercado.
+        </p>
+      </article>
+
+      <article>
+        <hgroup>
+          <h2 class="mt-5 font-bold text-xl text-gray-800">Engenharia de Computação</h2>
+        </hgroup>
+
+        <p class="mt-2 font-normal text-lg text-gray-700">
+          O curso de Bacharelado em Engenharia de Computação da Universidade Federal do Ceará, localizado no Campus Avançado de Quixadá, tomou como base as Diretrizes Curriculares do MEC para cursos de Computação, o Currículo de Referência da SBC (Sociedade Brasileira de Computação), o Currículo de Referência da ACM (Association for Computing Machinery), os projetos pedagógicos dos cursos de Sistemas de Informação e Ciência da Computação da UFC no campus Quixadá, e os projetos pedagógicos de alguns cursos de Engenharia de Computação com nota 4 na avaliação do ENADE: Universidade Federal do Ceará – Campus Sobral , Universidade Federal do Rio Grande do Sul (UFRGS) e a Universidade Federal de Pernambuco (UFPE).
+
+          Na perspectiva de contemplar a legislação em vigor que estabelece as diretrizes curriculares para a organização e o funcionamento dos cursos superiores o tempo ideal de permanência do aluno no Curso de Engenharia de Computação da Universidade Federal do Ceará no Campus de Quixadá será de dez semestres no qual, após a conclusão de horas de aula, o estudante obterá o grau de Bacharel em Engenharia de Computação
+        </p>
+      </article>
+
+      <article>
+        <hgroup>
+          <h2 class="mt-5 font-bold text-xl text-gray-800">Design Digital</h2>
+        </hgroup>
+
+        <p class="mt-2 font-normal text-lg text-gray-700">
+          O curso de Design Digital tem a finalidade de formar bacharéis com conhecimentos envolvendo quatro áreas: tecnologia, design, comunicação e artes. Essa formação interdisciplinar tem entregado ao mercado profissionais dotados de habilidades tecnológicas, humanísticas, artísticas e científicas concernentes ao design de produtos e interfaces digitais.
+
+          Por TECNOLOGIA, entendemos a aptidão no planejamento, concepção e desenvolvimento de produtos e interfaces digitais envolvendo diversas linguagens e ambientes computacionais.
+
+          Já as áreas de DESIGN, COMUNICAÇÃO e ARTES são vistas como pilares essenciais para dar ao bacharel a formação diferenciada a que o curso de Design Digital se propõe, em comparação com outros cursos de TIC – Tecnologias da Informação e Comunicação.
+
+          Essas áreas contribuem para as formações humanística, artística, comunicacional, crítica e criativa que se espera do egresso, e surgem, no curso, da necessidade de se considerar os fatores humanos em todo o ciclo de vida de sistemas computacionais interativos.
         </p>
       </article>
 
@@ -36,16 +57,35 @@
         </hgroup>
 
         <p class="mt-2 font-normal text-lg text-gray-700">
-          Mussum Ipsum, cacilds vidis litro abertis. Paisis, filhis, espiritis santis.Em pé sem
-          cair, deitado sem dormir, sentado sem cochilar e fazendo pose.Si u mundo tá muito paradis?
-          Toma um mé que o mundo vai girarzis!Vehicula non. Ut sed ex eros. Vivamus sit amet nibh
-          non tellus tristique interdum. Mussum Ipsum, cacilds vidis litro abertis. Cevadis im
-          ampola pa arma uma pindureta.Interessantiss quisso pudia ce receita de bolis, mais bolis
-          eu num gostis.Leite de capivaris, leite de mula manquis sem cabeça.Suco de cevadiss deixa
-          as pessoas mais interessantis. Mussum Ipsum, cacilds vidis litro abertis. Atirei o pau no
-          gatis, per gatis num morreus.Em pé sem cair, deitado sem dormir, sentado sem cochilar e
-          fazendo pose.Mauris nec dolor in eros commodo tempor. Aenean aliquam molestie leo, vitae
-          iaculis nisl.Mé faiz elementum girarzis, nisi eros vermeio.
+          A realidade global quanto ao uso de Tecnologia da Informação (TI) é de demanda crescente, mas com oferta insuficiente de profissionais para atendê-la. Vivemos um tempo de crescente reconhecimento do papel da computação para a inovação nas engenharias, ciências, negócios, educação, entretenimento, e em todos os aspectos de nossas vidas. Consequentemente, o número de empregos em computação cresceu nos últimos anos, enquanto a oferta de bons profissionais não acompanhou esse crescimento e não atende a demanda em alguns países, inclusive no Brasil. Essa realidade iniciou o movimento de outsourcing em alguns países, a exemplo dos EUA, que envolve contratação de empresas de outros países para cumprir demandas locais. Para outros países, essa situação foi vista como oportuna e a produção de software para outros países é uma das atividades que contribuiu para que Índia se tornasse uma economia emergente. O Brasil também é um país que fornece TICs para o exterior, e que apresenta demanda interna reprimida. Segundo a Brasscom, para exportar US$ 20 bilhões em software até 2020, o Brasil terá que formar 750 mil profissionais, sendo que 300 mil profissionais apenas para prestar esses serviços internacionais e o mercado interno demandará outros 450 mil profissionais. Acreditamos que o mesmo vale para o estado do Ceará, que desponta como produtor de TICs.
+
+          Nossa intenção é oferecer um curso para a formação de profissionais de excelência na região do sertão central cearense, com base em competências e práticas profissionais atualizadas. Esse objetivo alinha a oferta de estudantes que se formam no ensino médio da região com a demanda global por profissionais de computação, dando-lhes oportunidade de uma carreira promissora e favorecendo o desenvolvimento regional através da produção de TICs. Mais que isso, os egressos do curso de Bacharelado em Ciência da Computação serão capacitados para participar em atividades de pesquisa, possibilitando sua participação para o desenvolvimento científico e tecnológico. Tal desenvolvimento pode influenciar diretamente na criação de novas empresas no setor de TI ou inovação para serviços já existentes, mais uma vez reforçando o potencial do sertão central cearense como polo produtor de TI.
+
+          O curso de Bacharelado em Ciência da Computação é ofertado no Campus da UFC em Quixadá. O curso é ofertado exclusivamente na modalidade presencial no período diurno com suas disciplinas acontecendo predominantemente no turno da manhã. São ofertadas 50 vagas anuais concentradas no primeiro semestre de cada ano letivo, que são preenchidas através do Sistema de Seleção Unificada (SiSU/ENEM). O tempo de curso proposto é de 8 semestres (4 anos), sendo o máximo permitido de 12 semestres (6 anos), e a carga horária mínima é de 3.200 horas/aula. O regime de oferta de componentes disciplinares é o semestral. O curso confere a seus egressos, após cumpridos todos os requisitos, o grau de Bacharel em Ciência da Computação.
+        </p>
+      </article>
+
+      <article>
+        <hgroup>
+          <h2 class="mt-5 font-bold text-xl text-gray-800">Sistemas de Informação</h2>
+        </hgroup>
+
+        <p class="mt-2 font-normal text-lg text-gray-700">
+          A Universidade Federal do Ceará oferta o Curso de Bacharelado em Sistemas de Informação, com sede em Quixadá (CE), sintonizada com as iniciativas da área de Tecnologia da Informação do Estado e atenta às necessidades qualitativas e quantitativas exigidas pelo mercado de Tecnologia da Informação (TI).
+
+          A disciplina acadêmica/profissional de Sistemas de Informação contitui-se de uma ponte entre os campos multidisciplinares de negócios e de ciência da computação. Nessa área, estuda-se os processos de concepção, desenvolvimento e implantação de um sistema de informação, bem como os tipos de características inerentes a tais sistemas. As organizações empregam soluções de sistemas de informação com o objetivo de melhorar a eficiência e eficácia com que operam suas atividades. Por esse motivo, tais soluções estão relacionadas a atividades estratégicas operacionais e de gerenciamento, normalmente com aporte computacional.
+        </p>
+      </article>
+
+      <article>
+        <hgroup>
+          <h2 class="mt-5 font-bold text-xl text-gray-800">Redes de Computadores</h2>
+        </hgroup>
+
+        <p class="mt-2 font-normal text-lg text-gray-700">
+          O curso Superior de Tecnologia em Redes de Computadores da Universidade Federal do Ceará, localizado no Campus Avançado de Quixadá, segue as Diretrizes Curriculares em vigor e a Lei de Diretrizes e Bases da Educação Nacional (LDB) de 1996 (Lei 9.394/96).
+
+          A proposta pedagógica do Curso Superior de Tecnologia em Redes de Computadores busca uma diretriz ideal, enfatizando o aspecto tecnológico no âmbito das técnicas computacionais, provendo a prática necessária a um profissional da área de redes e dotando-o da capacidade de atualizar-se continuamente. O projeto pedagógico do curso busca dosar, de forma racional, teoria e prática nas proporções adequadas, de modo a formar um profissional apto a desenvolver e implementar soluções na área de aplicação das tecnologias da informação e da comunicação (TIC). O maior desafio da formação proposta é apresentar fundamentos teóricos e práticos de forma que o egresso seja capaz de manter-se continuamente atualizado diante do progresso incessante que é uma característica dessa área de atuação. Por outro lado, visa-se formar um profissional empreendedor, capaz de lidar com técnicas de gerenciamento de projetos inovadores de base tecnológica, notadamente na área de Redes de Computadores. Para tanto, propõe-se um modelo pedagógico capaz de adaptar-se à dinâmica das demandas da sociedade, em que a graduação passa a constituir-se numa etapa de formação inicial em processo de educação permanente.
         </p>
       </article>
     </section>

@@ -21,7 +21,7 @@ model User {
   updatedAt      String
   deletedAt      String?
 
-  UserResponseTest UserResponseTest[]
+  userResponseTest UserResponseTest[]
 }
 
 model Course {
@@ -38,7 +38,7 @@ model Test {
 
   questions Question[]
 
-  UserResponseTest UserResponseTest[]
+  userResponseTest UserResponseTest[]
 }
 
 model Question {
@@ -61,7 +61,7 @@ model ItemQuestion {
   course   Course @relation(fields: [courseId], references: [id])
   courseId String
 
-  Response Response[]
+  responses Response[]
 }
 
 model UserResponseTest {
@@ -84,7 +84,7 @@ model Response {
   itemQuestionId String
   itemQuestion   ItemQuestion @relation(fields: [itemQuestionId], references: [id])
 
-  UserResponseTest          UserResponseTest? @relation(fields: [userResponseTestUserId, userResponseTestCreatedAt, userResponseTestTestId], references: [userId, createdAt, testId])
+  userResponseTest          UserResponseTest? @relation(fields: [userResponseTestUserId, userResponseTestCreatedAt, userResponseTestTestId], references: [userId, createdAt, testId])
   userResponseTestTestId    String?
   userResponseTestUserId    String?
   userResponseTestCreatedAt DateTime?

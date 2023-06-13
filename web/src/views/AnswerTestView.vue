@@ -181,7 +181,7 @@ async function finishTest() {
     })
   }
 
-  const userId = authStore.getUserIdIfIsLoggedIn()
+  const userId = authStore.getUserId()
   const testId = id
   const responses: Array<{
     itemQuestionId: string
@@ -192,9 +192,6 @@ async function finishTest() {
     responses.push({
       itemQuestionId
     })
-    // toast.success(`Pergunta: ${question.description}. Resposta: ${question.selectedOption?.description}`, {
-      // position: POSITION.BOTTOM_RIGHT
-    // })
   }
 
   toast.info('Salvando informações da resposta...', {
@@ -215,15 +212,15 @@ async function finishTest() {
     })
   }
 
-  toast.success('Resposta salva', {
+  toast.success('Resposta salva. Redirecionando para página do resultado...', {
     position: POSITION.BOTTOM_RIGHT,
   })
 
-  toast.info('Redirecionando para página do resultado...', {
-    position: POSITION.BOTTOM_RIGHT,
-  })
+  const userIdEncoded = encodeURIComponent(userId ?? '')
+  const testIdEncoded = encodeURIComponent(testId as string)
+  const createdAt = new Date(saveResponseUserTestResult?.data.createUserResponseTest.createdAt).getTime()
 
-  setTimeout(() => router.push(encodeURI(`/result/${userId}/${testId}/${saveResponseUserTestResult?.data.createUserResponseTest.createdAt}`)), 1000)
+  setTimeout(() => router.push(`/result/${userIdEncoded}/${testIdEncoded}/${createdAt}`), 1000)
 }
 
 </script>

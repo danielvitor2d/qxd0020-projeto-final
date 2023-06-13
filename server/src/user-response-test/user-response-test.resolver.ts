@@ -13,7 +13,7 @@ export class UserResponseTestResolver {
   @Mutation(() => UserResponseTest)
   async createUserResponseTest(
     @Args('data') createUserResponseTestInput: CreateUserResponseTestInput,
-  ): Promise<UserResponseTest> {
+  ) {
     const { userId, testId, responses } = createUserResponseTestInput;
     return this.userResponseTestService.createUserResponseTest(
       userId,
@@ -23,9 +23,7 @@ export class UserResponseTestResolver {
   }
 
   @Query(() => [UserResponseTest])
-  async getUserResponseTestsByUserId(
-    @Args('userId') userId: string,
-  ): Promise<UserResponseTest[]> {
+  async getUserResponseTestsByUserId(@Args('userId') userId: string) {
     return this.userResponseTestService.getUserResponseTestsByUserId(userId);
   }
 
@@ -33,10 +31,23 @@ export class UserResponseTestResolver {
   async getUserResponseTestsByUserIdAndTestId(
     @Args('userId') userId: string,
     @Args('testId') testId: string,
-  ): Promise<UserResponseTest[]> {
+  ) {
     return this.userResponseTestService.getUserResponseTestsByUserIdAndTestId(
       userId,
       testId,
+    );
+  }
+
+  @Query(() => UserResponseTest)
+  async getUserResponseTest(
+    @Args('userId') userId: string,
+    @Args('testId') testId: string,
+    @Args('createdAt') createdAt: string,
+  ) {
+    return this.userResponseTestService.getUserResponseTest(
+      userId,
+      testId,
+      createdAt,
     );
   }
 }

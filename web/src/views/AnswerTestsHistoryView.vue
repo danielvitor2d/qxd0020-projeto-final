@@ -3,7 +3,7 @@
   <main>
     <LoadingComponent v-if="loading">Carregando...</LoadingComponent>
     <div v-else class="w-screen h-[calc(100vh-4rem)] flex items-center justify-center">
-      <div class="w-fit p-5 rounded-md bg-[#385898] flex flex-col items-center justify-center">
+      <div class="w-fit h-fit p-5 rounded-md bg-[#385898] flex flex-col items-center justify-center">
         <div class="text-white text-4xl mb-6">Histórico de Respostas</div>
         
         <EmptyData v-if="answers.length === 0" :primary="false"></EmptyData>
@@ -32,7 +32,6 @@ import { useAuthStore } from '@/stores/authStore';
 import { useQuery } from '@vue/apollo-composable';
 import { gql } from 'apollo-boost';
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
 
 import EmptyData from '@/components/EmptyData.vue';
 import { getCoursesAndPercentages } from '@/utils/getCoursesAndPercentages';
@@ -40,8 +39,8 @@ import { formatDate } from '../utils/formatDate';
 import { formatPercentage } from '../utils/formatPercentage';
 
 const GET_USER_RESPONSE_BY_USER_AND_TEST = gql`
-  query GetUserResponseTestsByUserIdAndTestId($userId: String!, $testId: String!) {
-    getUserResponseTestsByUserIdAndTestId(userId: $userId, testId: $testId) {
+  query GetUserResponseTestsByUserId($userId: String!) {
+    getUserResponseTestsByUserId(userId: $userId) {
       testId
       test {
         description
@@ -84,13 +83,11 @@ interface AnswerResume {
 }
 
 const authStore = useAuthStore()
-const { currentRoute: { value: { params: { id } } } } = useRouter()
 
 const userId = authStore.getUserId()
 
 const { result, loading, error, onResult } = useQuery(GET_USER_RESPONSE_BY_USER_AND_TEST, {
   userId,
-  testId: id
 });
 
 const answers = ref<Array<AnswerResume>>([])
@@ -98,7 +95,7 @@ const answers = ref<Array<AnswerResume>>([])
 onResult(() => {
   if (!result.value) return
 
-  const userResponses = result.value.getUserResponseTestsByUserIdAndTestId as UserResponses
+  const userResponses = result.value.getUserResponseTestsByUserId as UserResponses
 
   for (const userResponse of userResponses) {
     const [course, percentage] = getCoursesAndPercentages(userResponse.responses.map(response => response.itemQuestion.course.name))

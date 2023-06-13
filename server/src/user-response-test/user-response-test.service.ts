@@ -3,7 +3,6 @@ import { Injectable } from '@nestjs/common';
 
 import { PrismaService } from 'src/database/prisma.service';
 import { CreateResponseInput } from './dtos/create-response.input';
-import { UserResponseTest } from './entities/user-response-test.entity';
 
 @Injectable()
 export class UserResponseTestService {
@@ -13,7 +12,7 @@ export class UserResponseTestService {
     userId: string,
     testId: string,
     responses: CreateResponseInput[],
-  ): Promise<UserResponseTest> {
+  ) {
     const now = new Date().toISOString();
 
     const userResponseTest = await this.prisma.userResponseTest.create({
@@ -28,41 +27,60 @@ export class UserResponseTestService {
         createdAt: now,
       },
       include: {
-        responses: true,
+        responses: { include: { itemQuestion: { include: { course: true } } } },
+        test: true,
       },
     });
 
     return userResponseTest;
   }
 
-  async getUserResponseTestsByUserId(
-    userId: string,
-  ): Promise<UserResponseTest[]> {
+  async getUserResponseTestsByUserId(userId: string) {
     const userResponseTests = await this.prisma.userResponseTest.findMany({
       where: {
         userId,
       },
       include: {
-        responses: true,
+        responses: { include: { itemQuestion: { include: { course: true } } } },
+        test: true,
       },
     });
 
     return userResponseTests;
   }
 
-  async getUserResponseTestsByUserIdAndTestId(
-    userId: string,
-    testId: string,
-  ): Promise<UserResponseTest[]> {
+  async getUserResponseTestsByUserIdAndTestId(userId: string, testId: string) {
     const userResponseTests = await this.prisma.userResponseTest.findMany({
       where: {
         userId,
         testId,
       },
       include: {
-        responses: true,
+        responses: { include: { itemQuestion: { include: { course: true } } } },
+        test: true,
       },
     });
+
+    return userResponseTests;
+  }
+
+  async getUserResponseTest(userId: string, testId: string, createdAt: string) {
+    const userResponseTests =
+      await this.prisma.userResponseTest.findUniqueOrThrow({
+        where: {
+          userId_createdAt_testId: {
+            userId,
+            testId,
+            createdAt,
+          },
+        },
+        include: {
+          responses: {
+            include: { itemQuestion: { include: { course: true } } },
+          },
+          test: true,
+        },
+      });
 
     return userResponseTests;
   }

@@ -25,7 +25,7 @@ export const useAuthStore = defineStore('auth', {
       this.token = null
       localStorage.removeItem('token')
     },
-    getUserIdIfIsLoggedIn() {
+    getUserId() {
       if (!this.token) return null
       const decodedToken = jwtDecode(this.token) as Token;
       const userId = decodedToken.sub;

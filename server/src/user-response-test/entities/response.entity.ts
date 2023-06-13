@@ -1,5 +1,6 @@
 // response.entity.ts
 import { Field, ObjectType } from '@nestjs/graphql';
+import { ItemQuestion } from 'src/tests/entities/item-question.entity';
 
 @ObjectType()
 export class Response {
@@ -9,5 +10,6 @@ export class Response {
   @Field()
   itemQuestionId: string;
 
-  // Add other fields as necessary
+  @Field(() => ItemQuestion)
+  itemQuestion: ItemQuestion;
 }
