@@ -4,7 +4,7 @@
     <LoadingComponent v-if="loading">Carregando...</LoadingComponent>
     <div v-else class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div class="w-3/4 px-8 py-8 bg-white shadow-lg rounded-lg">
-        <h2 class="text-3xl font-bold mb-6 text-gray-900">Teste vocacional para Cursos da UFC - Campus Quixadá</h2>
+        <h2 class="text-3xl font-bold mb-6 text-gray-900">{{ result?.getTestById.description }}</h2>
         <div class="flex flex-col gap-12">
           <div class="h-min flex">
             <div
@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { useQuery } from '@vue/apollo-composable';
+import { useMutation, useQuery } from '@vue/apollo-composable';
 import { gql } from 'apollo-boost';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -62,27 +62,8 @@ import { POSITION, useToast } from 'vue-toastification';
 
 import ErrorPage from '@/components/ErrorPage.vue';
 import LoadingComponent from '@/components/LoadingComponent.vue';
-
-const toast = useToast()
-
-const GET_TEST_QUERY = gql`
-  query GetTestById($id: String!) {
-    getTestById(id: $id) {
-      description
-      questions {
-        id
-        description
-        questionItems {
-          id
-          description
-          course {
-            name
-          }
-        }
-      }
-    }
-  }
-`
+import router from '@/router';
+import { useAuthStore } from '@/stores/authStore';
 
 interface Course {
   name: string
@@ -110,6 +91,43 @@ interface Test {
   questions: Question[]
 }
 
+const toast = useToast()
+
+const GET_TEST_QUERY = gql`
+  query GetTestById($id: String!) {
+    getTestById(id: $id) {
+      description
+      questions {
+        id
+        description
+        questionItems {
+          id
+          description
+          course {
+            name
+          }
+        }
+      }
+    }
+  }
+`
+
+const REGISTER_USER_RESPONSE_TEST_MUTATION = gql`
+  mutation CreateUserResponseTest($data: CreateUserResponseTestInput!) {
+    createUserResponseTest(data: $data) {
+      testId
+      userId
+      createdAt
+      responses {
+        id
+        itemQuestionId
+      }
+    }
+  }
+`
+
+const authStore = useAuthStore()
+
 const {
   currentRoute: {
     value: {
@@ -117,6 +135,8 @@ const {
     }
   },
 } = useRouter()
+
+const { mutate } = useMutation(REGISTER_USER_RESPONSE_TEST_MUTATION)
 
 const { result, loading, error, onResult } = useQuery<QueryResult>(GET_TEST_QUERY, {
   id: id as string
@@ -154,18 +174,56 @@ function checkAnswers() {
   return true
 }
 
-function finishTest() {
+async function finishTest() {
   if (!checkAnswers()) {
     return toast.error('Por favor, responda todas as questões.', {
       position: POSITION.BOTTOM_RIGHT
     })
   }
 
+  const userId = authStore.getUserIdIfIsLoggedIn()
+  const testId = id
+  const responses: Array<{
+    itemQuestionId: string
+  }> = []
+
   for (const question of questions.value) {
-    toast.success(`Pergunta: ${question.description}. Resposta: ${question.selectedOption?.description}`, {
-      position: POSITION.BOTTOM_RIGHT
+    const itemQuestionId = question.selectedOption?.id as string
+    responses.push({
+      itemQuestionId
+    })
+    // toast.success(`Pergunta: ${question.description}. Resposta: ${question.selectedOption?.description}`, {
+      // position: POSITION.BOTTOM_RIGHT
+    // })
+  }
+
+  toast.info('Salvando informações da resposta...', {
+    position: POSITION.BOTTOM_RIGHT,
+  })
+
+  const saveResponseUserTestResult = await mutate({
+    data: {
+      userId,
+      testId,
+      responses
+    }
+  })
+
+  if (!saveResponseUserTestResult?.data || saveResponseUserTestResult.errors) {
+    return toast.error('Erro ao salvar resposta. Tente novamente mais tarde.', {
+      position: POSITION.BOTTOM_RIGHT,
     })
   }
+
+  toast.success('Resposta salva', {
+    position: POSITION.BOTTOM_RIGHT,
+  })
+
+  toast.info('Redirecionando para página do resultado...', {
+    position: POSITION.BOTTOM_RIGHT,
+  })
+
+  setTimeout(() => router.push(encodeURI(`/result/${userId}/${testId}/${saveResponseUserTestResult?.data.createUserResponseTest.createdAt}`)), 1000)
 }
 
 </script>
