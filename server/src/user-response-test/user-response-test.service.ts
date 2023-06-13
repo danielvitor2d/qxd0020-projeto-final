@@ -35,24 +35,35 @@ export class UserResponseTestService {
     return userResponseTest;
   }
 
-  async findUserResponseTestById(
+  async getUserResponseTestsByUserId(
     userId: string,
-    createdAt: Date,
-    testId: string,
-  ): Promise<UserResponseTest | null> {
-    const userResponseTest = await this.prisma.userResponseTest.findUnique({
+  ): Promise<UserResponseTest[]> {
+    const userResponseTests = await this.prisma.userResponseTest.findMany({
       where: {
-        userId_createdAt_testId: {
-          userId,
-          createdAt,
-          testId,
-        },
+        userId,
       },
       include: {
         responses: true,
       },
     });
 
-    return userResponseTest;
+    return userResponseTests;
+  }
+
+  async getUserResponseTestsByUserIdAndTestId(
+    userId: string,
+    testId: string,
+  ): Promise<UserResponseTest[]> {
+    const userResponseTests = await this.prisma.userResponseTest.findMany({
+      where: {
+        userId,
+        testId,
+      },
+      include: {
+        responses: true,
+      },
+    });
+
+    return userResponseTests;
   }
 }
