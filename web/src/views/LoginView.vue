@@ -76,11 +76,9 @@ const onSubmit = async () => {
     // console.log(access_token)
 
     if (!access_token) {
-      toast.error('E-mail ou senha inválidos', {
+      return toast.error('E-mail ou senha inválidos', {
         position: POSITION.BOTTOM_RIGHT
       })
-
-      return
     }
 
     toast.success('Autorizado. Redirecionando para tela inicial.', {
@@ -94,6 +92,9 @@ const onSubmit = async () => {
     setTimeout(() => router.replace('/'), 1000)
   } catch (error) {
     console.log(error)
+    return toast.error('E-mail ou senha inválidos', {
+      position: POSITION.BOTTOM_RIGHT
+    })
   }
 }
 </script>

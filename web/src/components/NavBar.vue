@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { onUnmounted, ref, watchEffect } from 'vue'
-import { useRouter } from 'vue-router'
+import { onUnmounted, ref, watchEffect } from 'vue';
+import { useRouter } from 'vue-router';
 
-import { useAuthStore } from '../stores/authStore'
+import { useAuthStore } from '../stores/authStore';
 
 const authStore = useAuthStore()
 const router = useRouter()
@@ -69,7 +69,7 @@ onUnmounted(() => {
             <p class="text-sm font-bold text-[#007AC2] hover:text-[#007AC2]">Login</p>
           </button>
         </div>
-        <div v-else class="relative" ref="dropdown">
+        <div v-else-if="authStore.getRoles() === 'admin'" class="relative" ref="dropdown">
           <button @click="toggleDropdown" class="bg-white px-4 py-2 rounded focus:outline-none">
             <p class="text-sm font-bold text-[#007AC2] hover:text-[#007AC2]">Admin</p>
           </button>
@@ -86,6 +86,29 @@ onUnmounted(() => {
             </router-link>
             <router-link to="/admin/tests" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
               Testes
+            </router-link>
+            <button
+              @click="logout"
+              class="w-full block px-4 py-2 text-gray-800 hover:bg-gray-100 text-left"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+        <div v-else class="relative" ref="dropdown">
+          <button @click="toggleDropdown" class="bg-white px-4 py-2 rounded focus:outline-none">
+            <p class="text-sm font-bold text-[#007AC2] hover:text-[#007AC2]">Aluno</p>
+          </button>
+
+          <div
+            v-if="isDropdownOpen"
+            class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-lg"
+          >
+            <router-link
+              to="/admin/edit-test"
+              class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+            >
+              Perfil do Usuário
             </router-link>
             <router-link
               to="/admin/edit-test"

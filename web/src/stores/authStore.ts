@@ -4,6 +4,7 @@ import { defineStore } from 'pinia';
 interface Token {
   sub: string;
   email: string;
+  roles: string;
 }
 
 export const useAuthStore = defineStore('auth', {
@@ -29,6 +30,11 @@ export const useAuthStore = defineStore('auth', {
       const decodedToken = jwtDecode(this.token) as Token;
       const userId = decodedToken.sub;
       return userId;
+    },
+    getRoles() {
+      if (!this.token) return null
+      const { roles } = jwtDecode(this.token) as Token;
+      return roles;
     }
   }
 })
