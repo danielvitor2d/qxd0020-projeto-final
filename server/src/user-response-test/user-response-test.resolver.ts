@@ -22,15 +22,20 @@ export class UserResponseTestResolver {
     );
   }
 
-  @Query(() => UserResponseTest, { nullable: true })
-  async findUserResponseTestById(
+  @Query(() => [UserResponseTest])
+  async getUserResponseTestsByUserId(
     @Args('userId') userId: string,
-    @Args('createdAt') createdAt: Date,
+  ): Promise<UserResponseTest[]> {
+    return this.userResponseTestService.getUserResponseTestsByUserId(userId);
+  }
+
+  @Query(() => [UserResponseTest])
+  async getUserResponseTestsByUserIdAndTestId(
+    @Args('userId') userId: string,
     @Args('testId') testId: string,
-  ): Promise<UserResponseTest | null> {
-    return this.userResponseTestService.findUserResponseTestById(
+  ): Promise<UserResponseTest[]> {
+    return this.userResponseTestService.getUserResponseTestsByUserIdAndTestId(
       userId,
-      createdAt,
       testId,
     );
   }

@@ -14,7 +14,7 @@ const setAuthorizationLink = setContext((_, { headers }) => {
 })
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3000/graphql'
+  uri: `${import.meta.env.VITE_BACKEND_URL}/graphql`
 })
 
 const apolloClient = new ApolloClient({
