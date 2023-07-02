@@ -26,7 +26,7 @@ const router = useRouter()
           
           O teste vocacional geralmente consiste em uma série de perguntas e atividades que exploram diferentes aspectos da personalidade, interesses, habilidades, valores e metas pessoais. Ao realizar um teste vocacional, os indivíduos podem obter uma compreensão mais clara de si mesmos e de suas inclinações profissionais. Os resultados do teste podem sugerir áreas específicas de trabalho ou estudo que sejam compatíveis com as características e interesses identificados. Essas informações podem servir como um guia útil para a escolha de uma carreira, a definição de metas educacionais ou a exploração de oportunidades profissionais.
         </p>
-        
+
       </article>
     </section>
   </main>
