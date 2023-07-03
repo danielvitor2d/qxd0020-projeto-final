@@ -84,14 +84,17 @@ onUnmounted(() => {
             >
               Perfil do Usuário
             </router-link>
+            <router-link to="/admin/tests" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+              Testes
+            </router-link>
+            <router-link to="/admin/courses" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+              Cursos
+            </router-link>
             <router-link
               to="/tests/history"
               class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
             >
               Histórico
-            </router-link>
-            <router-link to="/admin/tests" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
-              Testes
             </router-link>
             <button
               @click="logout"

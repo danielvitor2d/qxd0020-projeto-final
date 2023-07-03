@@ -2,7 +2,7 @@
   <LoadingComponent v-if="loading">Carregando...</LoadingComponent>
   <div v-else class="container mx-auto py-8">
     <h1 class="text-3xl font-semibold mb-8">Visualizar Testes</h1>
-    <EmptyData v-if="tests?.length === 0"></EmptyData>
+    <EmptyData v-if="tests?.length === 0" :primary=true></EmptyData>
     <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
       <AdminTestCard v-for="test in tests" :key="test.id as string" :test="test" class="animate-fadeIn"></AdminTestCard>
     </div>

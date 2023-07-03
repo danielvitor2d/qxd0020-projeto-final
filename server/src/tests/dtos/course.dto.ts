@@ -11,6 +11,11 @@ export class CreateCourseDto {
   @IsNotEmpty()
   @IsString()
   university: string;
+
+  @Field()
+  @IsNotEmpty()
+  @IsString()
+  departmentId: string;
 }
 
 @InputType()
@@ -24,4 +29,9 @@ export class UpdateCourseDto {
   @IsNotEmpty()
   @IsString()
   university: string;
+
+  @Field()
+  @IsNotEmpty()
+  @IsString()
+  departmentId: string;
 }

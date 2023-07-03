@@ -85,6 +85,16 @@ const router = createRouter({
       component: () => import('@/layouts/MainLayout.vue'),
       children: [
         {
+          path: 'courses',
+          name: 'AdminCoursesPage',
+          component: () => import('@/views/AdminCoursesView.vue')
+        },
+        {
+          path: 'department/create',
+          name: 'CreateDepartmentPage',
+          component: () => import('@/views/SaveDepartmentView.vue')
+        },
+        {
           path: 'tests',
           name: 'AdminTestsPage',
           component: () => import('@/views/AdminTestsView.vue')
