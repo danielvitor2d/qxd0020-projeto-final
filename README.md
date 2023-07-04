@@ -2,12 +2,14 @@
 
 O objetivo do sistema é a realização de testes vocacionais voltados para a Universidade Federal do Ceará. Serão disponibilizados testes para que o usuário responda e consiga descobrir se, por uma relação entre as respostas que ele forneceu e os objetivos/grades dos cursos, se ele possui afinidade com essa área e qual curso especificamente. 
 
+🌟link para acesso ao sistema: [teste-vocacional-pi-ii.netlify.app](https://teste-vocacional-pi-ii.netlify.app/)
+
 ## :technologist: Membros da equipe
 
-- Daniel Vitor Pereira Rodrigues - 521438 - Engenharia de Software
-- Mônica Yasmin Costa da Silva - 469914 - Engenharia de Software
-- Gabriel Correia (Não está na disciplina)
-- Thiago Tharles (Não está na disciplina)
+- Daniel Vitor Pereira Rodrigues - 521438 - Engenharia de Software ( PI2 - V&V - WEB )
+- Mônica Yasmin Costa da Silva - 469914 - Engenharia de Software ( PI2 - V&V - WEB )
+- Gabriel Correia da Silva - 476751  - Engenharia de Software ( PI2 - V&V )
+- Thiago Tharles Felicio de Oliveira - 471808 - Engenharia de Software ( PI2 - V&V )
 
 ## :people_holding_hands: Papéis ou tipos de usuário da aplicação
 
@@ -40,13 +42,6 @@ Funcionalidades para todos os usuários:
  - Visualizar os testes vocacionais
  - Responder os testes vocacionais
 
-----
-
-:warning::warning::warning: As informações a seguir devem ser enviadas juntamente com a versão final do projeto. :warning::warning::warning:
-
-
-----
-
 ## :desktop_computer: Tecnologias e frameworks utilizados
 
 **Frontend:**
@@ -74,15 +69,12 @@ Lista as tecnologias, frameworks e bibliotecas utilizados.
 
 | Entidade| Criação | Leitura | Atualização | Remoção |
 | --- | --- | --- | --- | --- |
-| Entidade 1 | X |  X  |  | X |
-| Entidade 2 | X |    |  X | X |
-| Entidade 3 | X |    |  |  |
+|Departamento| X |  X  | X | X |
+|Curso | X |  X  | X | X |
+|Usuario | X |  X  | X | X |
+|Teste | X |  X  | X | X |
+|RespostaUsuarioTeste | X |  X  | X | X |
+|Resposta | X |  X  | X | X |
+|Questao | X |  X  | X | X |
+|ItemQuestao| X |  X  | X | X |
 
-> Lembre-se que é necessário implementar o CRUD de pelo menos duas entidades.
-
-## :neckbeard: Rotas da API REST utilizadas
-
-| Método HTTP | URL |
-| --- | --- |
-| GET | api/entidade1/|
-| POST | api/entidade2 |
