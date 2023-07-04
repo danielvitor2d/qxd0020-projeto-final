@@ -78,3 +78,9 @@ Lista as tecnologias, frameworks e bibliotecas utilizados.
 |Questao | X |  X  | X | X |
 |ItemQuestao| X |  X  | X | X |
 
+## 📰 Documentação do desenvolvimento
+
+- Kanbam/Users Stories (Trello): https://trello.com/b/Hz19uCvp/projeto-integrado-2
+- Planilha de documentação de testes: https://docs.google.com/spreadsheets/d/1aYCBI-_QXXAHCjZtY0KzO8-6lzM_7D3nTG5iVuSX9CY/edit#gid=526071116
+- documento de Visão: https://onedrive.live.com/edit.aspx?resid=45A106A6F5E6BCC2!115&ithint=file%2cdocx&authkey=!AIp3-8BJ8ceu4fE
+- prototipação (Figma): https://www.figma.com/file/2AytQFQFz4CGu8FI3NHDne/Teste-Vocacional?type=design&node-id=53-65117&mode=design
