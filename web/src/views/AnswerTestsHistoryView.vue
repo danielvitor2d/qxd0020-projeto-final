@@ -98,14 +98,15 @@ onResult(() => {
   const userResponses = result.value.getUserResponseTestsByUserId as UserResponses
 
   for (const userResponse of userResponses) {
-    const [course, percentage] = getCoursesAndPercentages(userResponse.responses.map(response => response.itemQuestion.course.name))
+    const allCourses = getCoursesAndPercentages(userResponse.responses.map(response => response.itemQuestion.course.name))
+    const total = allCourses.reduce((prev, curr) => prev + curr.quantity, 0)
 
     answers.value.push({
       id: `${userResponse.testId}-${userResponse.userId}-${userResponse.createdAt}`,
       testName: userResponse.test.description,
       date: userResponse.createdAt,
-      course,
-      percentage: formatPercentage(percentage, 1)
+      course: allCourses[0].course,
+      percentage: formatPercentage(allCourses[0].quantity / total, 1)
     })
   }
 
