@@ -1,40 +1,28 @@
 <template>
-  <div class="bg-[#FEFEFE] h-[calc(100vh-4rem)] w-screen flex items-center justify-center">
-    <div class="p-10 bg-[#00235B] w-fit h-fit flex flex-col items-center justify-center rounded-md">
-      <div class="text-white text-4xl mb-6">Resultado do Teste Vocacional</div>
+  <LoadingComponentVue v-if="loading" />
+  <div v-else class="bg-gradient-to-br from-[#00235B] via-[#003976] to-[#0F9B8E] h-[calc(100vh-4rem)] flex items-center justify-center">
+    <div class="p-10 bg-white w-[34rem] h-[fit-content] flex flex-col items-center justify-center rounded-md shadow-lg">
+      <div class="text-zinc-800 font-extrabold text-4xl mb-6">Resultado do Teste Vocacional</div>
       
-      <div class="flex flex-col items-center space-y-4">
-        <div class="flex flex-col items-center space-y-2">
-          <!-- <img class="w-32 h-32 rounded-full object-cover" :src="`https://cataas.com/cat`" :alt="course.name" /> -->
-          <div class="text-white text-2xl">{{ courseName }}</div>
+      <div v-if="courses.length > 0" class="w-full flex flex-col items-center space-y-6">
+        <div v-for="(course, index) of courses" :key="course.course" class="w-full flex flex-row justify-between gap-2">
+          <div class="text-zinc-800 text-xl">{{ index + 1 }}º Lugar:</div>
+          <div class="max-w-1/2 text-green-500 text-xl">{{ `${course.course} (${formatPercentage(course.percentage, 1)})` }}</div>
         </div>
-        
-        <div class="text-white text-lg">{{ percentageValue }}</div>
-        
-        <div class="flex space-x-4">
-          <div class="flex flex-col items-center">
-            <div class="text-white text-xl">Compatibilidade</div>
-            <div class="text-green-500 text-2xl">{{ 'Alta' }}</div>
-          </div>
-          
-          <div class="flex flex-col items-center">
-            <div class="text-white text-xl">Nº de Perguntas</div>
-            <div class="text-green-500 text-2xl">{{ numQuestionsCourse + '/' + numQuestions }}</div>
-          </div>
-        </div>
-        
-        <router-link to="/tests" class="bg-green-500 text-white px-4 py-2 rounded-md text-xl mt-4 hover:bg-green-600">Fazer outro teste</router-link>
+
+        <router-link to="/tests" class="bg-green-500 text-white px-4 py-2 rounded-md text-xl mt-4 hover:bg-green-600 transition-all">Fazer outro teste</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useQuery } from '@vue/apollo-composable';
+  import { useQuery } from '@vue/apollo-composable';
 import { gql } from 'apollo-boost';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
+  import type LoadingComponentVue from '@/components/LoadingComponent.vue';
 import { formatPercentage } from '@/utils/formatPercentage';
 import { getCoursesAndPercentages } from '@/utils/getCoursesAndPercentages';
 
@@ -69,7 +57,6 @@ import { getCoursesAndPercentages } from '@/utils/getCoursesAndPercentages';
           itemQuestion {
             course {
               name
-              university
             }
           }
         }
@@ -79,28 +66,33 @@ import { getCoursesAndPercentages } from '@/utils/getCoursesAndPercentages';
 
   const { currentRoute: { value: { params: { userId, testId, createdAt } } } } = useRouter()
 
-  const { result, onResult } = useQuery(GET_USER_RESPONSE, {
+  const { result, onResult, loading } = useQuery(GET_USER_RESPONSE, {
     userId,
     testId,
     createdAt: new Date(Number(createdAt)).toISOString()
   })
 
-  const courseName = ref('')
-  const numQuestions = ref(0)
-  const numQuestionsCourse = ref(0)
-  const percentageValue = ref('')
+  const courses = ref<Array<{
+    course: string,
+    percentage: number,
+  }>>([])
 
   onResult(() => {
     if (!result.value) return
 
     const userResponse = result.value.getUserResponseTest as UserResponse
 
-    const [course, percentage] = getCoursesAndPercentages(userResponse.responses.map(response => response.itemQuestion.course.name))
+    let allCourses = getCoursesAndPercentages(userResponse.responses.map(response => response.itemQuestion.course.name))
+    const total = allCourses.reduce((prev, curr) => prev + curr.quantity, 0)
 
-    courseName.value = course
-    percentageValue.value = formatPercentage(percentage, 1)
+    // console.log(allCourses)
 
-    numQuestions.value = userResponse.responses.length
-    numQuestionsCourse.value = userResponse.responses.reduce((prev: number, curr) => prev + (curr.itemQuestion.course.name === course ? 1 : 0), 0)
+    courses.value = allCourses.slice(0, 3).map(c => ({ course: c.course, percentage: c.quantity / total }))
+
+    // courseName.value = course
+    // percentageValue.value = formatPercentage(percentage, 1)
+
+    // numQuestions.value = userResponse.responses.length
+    // numQuestionsCourse.value = userResponse.responses.reduce((prev: number, curr) => prev + (curr.itemQuestion.course.name === course ? 1 : 0), 0)
   })
 </script>

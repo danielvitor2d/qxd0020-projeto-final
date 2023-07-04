@@ -53,12 +53,10 @@ describe('CoursesResolver', () => {
       const id = 'course-id';
       const updateCourseDto: UpdateCourseDto = {
         name: 'EC',
-        university: 'UFC',
       };
       const updatedCourse: Course = {
         id: '123',
         name: 'EC',
-        university: 'UFC',
         questionItems: [],
       };
       // testsService.updateCourse.mockResolvedValue(updatedCourse);
@@ -79,7 +77,6 @@ describe('CoursesResolver', () => {
       const deletedCourse: Course = {
         id: '123',
         name: 'EC',
-        university: 'UFC',
         questionItems: [],
       };
       // testsService.deleteCourse.mockResolvedValue(deletedCourse);
@@ -97,7 +94,6 @@ describe('CoursesResolver', () => {
       const course: Course = {
         id: '123',
         name: 'EC',
-        university: 'UFC',
         questionItems: [],
       };
       // testsService.getCourseById.mockResolvedValue(course);
@@ -115,13 +111,13 @@ describe('CoursesResolver', () => {
         {
           id: '123',
           name: 'EC',
-          university: 'UFC',
+
           questionItems: [],
         },
         {
           id: '321',
           name: 'CC',
-          university: 'UFC',
+
           questionItems: [],
         },
       ];
