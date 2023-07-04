@@ -2,24 +2,25 @@
   <ErrorPage v-if="error" error-message="Erro ao buscar teste. Volte para a tela inicial e tente novamente."></ErrorPage>
   <main v-else>
     <LoadingComponent v-if="loading">Carregando...</LoadingComponent>
-    <div v-else class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div v-else class="flex flex-col items-center justify-center h-[calc(100vh-4rem)] bg-gray-100">
       <div class="w-3/4 px-8 py-8 bg-white shadow-lg rounded-lg">
         <h2 class="text-3xl font-bold mb-6 text-gray-900">{{ result?.getTestById.description }}</h2>
         <div class="flex flex-col gap-12">
           <div class="h-min flex">
-            <div
+            <button
               v-for="(question, index) in questions"
               :key="index"
+              :ref="index === activeIndex ? 'activeItem' : ''"
               :class="`px-4 py-2 cursor-pointer ${
                 activeQuestionIndex === index ? 'bg-blue-500 text-white' : !question.answered ? 'bg-gray-300' :'bg-green-500 text-white'
               } rounded-t-lg mr-2 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white`"
-              @click="setActiveQuestion(index)"
               @keydown.arrow-down="handleArrowDown(index)"
               @keydown.arrow-up="handleArrowUp(index)"
+              @click="setActiveQuestion(index)"
               tabindex="0"
             >
               {{ index + 1 }}
-            </div>
+            </button>
           </div>
           <Transition name="slide-left" mode="out-in">
             <div v-if="activeQuestion" :key="activeQuestionIndex" class="mb-8">

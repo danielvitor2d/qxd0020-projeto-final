@@ -1,5 +1,5 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCheck, faExclamationTriangle, faLock, faPlus, faTrashCan, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faArrowUp, faCheck, faExclamationTriangle, faLock, faPlus, faTrashCan, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { DefaultApolloClient } from '@vue/apollo-composable'
 import { createPinia } from 'pinia'
@@ -19,6 +19,7 @@ library.add(faXmark)
 library.add(faCheck)
 library.add(faPlus)
 library.add(faLock)
+library.add(faArrowUp)
 
 const app = createApp(App)
 

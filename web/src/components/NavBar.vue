@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onUnmounted, ref, watchEffect } from 'vue';
+import { onBeforeUnmount, onMounted, onUnmounted, ref, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
 
 import { useAuthStore } from '../stores/authStore';
@@ -39,6 +39,34 @@ watchEffect((onInvalidate) => {
 onUnmounted(() => {
   document.removeEventListener('click', handleClickOutside)
 })
+
+// Variável reativa para controlar a exibição do botão
+const showButton = ref(false);
+
+// Função para rolar para o topo da página
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+}
+
+// Função que será executada quando o componente for montado
+onMounted(() => {
+  // Adiciona um ouvinte de evento para verificar a posição da janela
+  window.addEventListener('scroll', handleScroll);
+});
+
+// Função que será executada antes do componente ser desmontado
+onBeforeUnmount(() => {
+  // Remove o ouvinte de evento quando o componente for desmontado
+  window.removeEventListener('scroll', handleScroll);
+});
+
+// Função para verificar a posição da janela e controlar a exibição do botão
+function handleScroll() {
+  showButton.value = window.scrollY > 200;
+}
 </script>
 
 <template>
@@ -135,5 +163,16 @@ onUnmounted(() => {
         </div>
       </li>
     </ul>
+    <button
+      v-show="showButton"
+      @click="scrollToTop"
+      aria-label="back to top"
+      title="Voltar para o topo"
+      class="fixed bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+    >
+      <font-awesome-icon
+        icon="fa-arrow-up"
+      />
+    </button>
   </nav>
 </template>
