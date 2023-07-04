@@ -3,7 +3,7 @@
     <h2 class="text-xl font-semibold text-gray-800 mb-4">{{ test.title }}</h2>
     <p class="text-gray-600 mb-4">{{ test.description }}</p>
     <div class="flex justify-between items-center">
-      <span class="text-sm text-gray-500">{{ test.numResponses || 0 }} respostas</span>
+      <!-- <span class="text-sm text-gray-500">{{ test.numResponses || 0 }} respostas</span> -->
       <div>
         <button
           class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mr-2"

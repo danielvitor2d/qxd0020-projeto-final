@@ -20,7 +20,10 @@ const { result, loading, refetch } = useQuery<{
   getAllTests: Array<Test>
 }>(GET_TESTS_QUERY)
 
-const tests = computed(() => result.value?.getAllTests)
+const tests = computed(() => result.value?.getAllTests.map(test => ({
+  ...test,
+  numResponses: test
+})))
 
 onBeforeMount(() => {
   refetch()
