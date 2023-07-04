@@ -2,7 +2,7 @@
 
 O objetivo do sistema é a realização de testes vocacionais voltados para a Universidade Federal do Ceará. Serão disponibilizados testes para que o usuário responda e consiga descobrir se, por uma relação entre as respostas que ele forneceu e os objetivos/grades dos cursos, se ele possui afinidade com essa área e qual curso especificamente. 
 
-🌟link para acesso ao sistema: [teste-vocacional-pi-ii.netlify.app](https://teste-vocacional-pi-ii.netlify.app/)
+🌟 Link para acesso ao sistema: [teste-vocacional-pi-ii.netlify.app](https://teste-vocacional-pi-ii.netlify.app/)
 
 ## :technologist: Membros da equipe
 
