@@ -106,12 +106,12 @@ function handleScroll() {
             v-if="isDropdownOpen"
             class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-lg"
           >
-            <router-link
+            <!-- <router-link
               to="/profile"
               class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
             >
               Perfil do Usuário
-            </router-link>
+            </router-link> -->
             <router-link to="/admin/tests" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
               Testes
             </router-link>
@@ -141,12 +141,12 @@ function handleScroll() {
             v-if="isDropdownOpen"
             class="absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-lg"
           >
-            <router-link
+            <!-- <router-link
               to="/profile"
               class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
             >
               Perfil do Usuário
-            </router-link>
+            </router-link> -->
             <router-link
               to="/tests/history"
               class="block px-4 py-2 text-gray-800 hover:bg-gray-100"
