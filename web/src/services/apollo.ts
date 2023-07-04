@@ -19,7 +19,7 @@ const httpLink = createHttpLink({
 
 const apolloClient = new ApolloClient({
   link: setAuthorizationLink.concat(httpLink),
-  cache: new InMemoryCache()
+  cache: new InMemoryCache({ addTypename: false })
 })
 
 export default apolloClient

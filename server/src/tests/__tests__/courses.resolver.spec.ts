@@ -33,12 +33,10 @@ describe('CoursesResolver', () => {
     it('should call testsService.createCourse and return the created course', async () => {
       const createCourseDto: CreateCourseDto = {
         name: 'EC',
-        university: 'UFC',
       };
       const createdCourse: Course = {
         id: '123',
         name: 'EC',
-        university: 'UFC',
         questionItems: [],
       };
       // testsService.createCourse.mockResolvedValue(createdCourse);

@@ -7,6 +7,11 @@ export class CreateTestDto {
   @IsNotEmpty()
   @IsString()
   description: string;
+
+  @Field()
+  @IsNotEmpty()
+  @IsString()
+  departmentId: string;
 }
 
 @InputType()
@@ -15,4 +20,9 @@ export class UpdateTestDto {
   @IsNotEmpty()
   @IsString()
   description: string;
+
+  @Field()
+  @IsNotEmpty()
+  @IsString()
+  departmentId: string;
 }

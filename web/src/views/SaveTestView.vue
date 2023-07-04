@@ -5,16 +5,35 @@
       {{ isEdit ? 'Editar Teste Vocacional' : 'Criar Teste Vocacional' }}
     </h1>
     <form class="w-3/5" @submit.prevent.stop="saveTest">
-      <div class="mb-4 animate-fadeIn">
-        <label for="title" class="block text-gray-700 font-semibold mb-2">Título do Teste:</label>
-        <input
-          v-model="test.description"
-          type="text"
-          id="title"
-          class="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
+      <div class="flex flex-col">
+        <div class="mb-4 animate-fadeIn">
+          <label for="title" class="block text-gray-800 font-semibold mb-2">Título do Teste:</label>
+          <input
+            v-model="test.description"
+            type="text"
+            id="title"
+            class="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
       </div>
-      <div class="animate-fadeIn">
+      <div class="flex flex-col">
+        <div class="mb-4 animate-fadeIn">
+          <label for="title" class="block text-gray-800 font-semibold mb-2">Departamento:</label>
+          <div v-if="getDepartmentsLoading" class="relative w-1/4 ml-2">Carregando departamentos...</div>
+          <div v-else class="relative w-1/2 ml-2">
+            <select
+              v-model="test.department"
+              class="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="" disabled selected>Selecione um departamento</option>
+              <option v-for="department in departments" :key="department.name" :value="department">
+                {{ department.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div v-if="test.department.id && test.department.id.length > 0" class="animate-fadeIn">
         <div v-for="(question, index) in test.questions" :key="index" class="mb-4">
           <div class="bg-gray-100 rounded-lg shadow-lg p-6">
             <h2 class="mb-2 font-bold">Pergunta {{ index + 1 }}</h2>
@@ -41,8 +60,7 @@
                 type="text"
                 class="w-3/4 border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              <div v-if="loadingCourses" class="relative w-1/4 ml-2">Carregando cursos...</div>
-              <div v-else class="relative w-1/4 ml-2">
+              <div class="relative w-1/4 ml-2">
                 <select
                   v-model="item.courseId"
                   class="w-full border border-gray-300 rounded-md py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -75,7 +93,22 @@
           Adicionar Pergunta
         </button>
       </div>
-      <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-8 animate-fadeIn">
+      <button v-if="saving" disabled="true" class="cursor-wait bg-blue-500 opacity-75 hover:bg-blue-600 text-white py-2 px-4 rounded mt-8">
+        <svg
+          class="animate-spin h-6 w-6 text-white"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-1.647z"
+          ></path>
+        </svg>
+      </button>
+      <button v-else type="submit" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-8 animate-fadeIn">
         {{ isEdit ? 'Salvar alterações' : 'Criar Teste' }}
       </button>
     </form>
@@ -92,33 +125,40 @@ import { POSITION, useToast } from 'vue-toastification'
 import DeleteIcon from '@/components/DeleteIcon.vue'
 import LoadingComponent from '@/components/LoadingComponent.vue'
 import type { Course } from '@/types/course'
+import type { Department } from '@/types/department'
 import type { Test } from '@/types/test.js'
-
-const router = useRouter()
-
-const isEdit = router.currentRoute.value.params.id ? true : false
 
 interface QueryResult {
   getTestById: Test
 }
 
+interface GetDepartmentsQueryResult {
+  getAllDepartments: Array<Department>
+}
+
+const router = useRouter()
+
 const toast = useToast()
 
-// queries
-const GET_COURSES_QUERY = gql`
-  query {
-    getAllCourses {
-      id
-      name
-    }
-  }
-`
+const isEdit = !!router.currentRoute.value.params.id
+
+const departments = ref<Array<Department>>([])
+
+const saving = ref(false)
 
 const GET_TEST_QUERY = gql`
   query GetTestById($id: String!) {
     getTestById(id: $id) {
       id
       description
+      department {
+        id
+        name
+        courses {
+          id
+          name
+        }
+      }
       questions {
         id
         description
@@ -135,10 +175,24 @@ const GET_TEST_QUERY = gql`
     }
   }
 `
+
+const GET_DEPARTMENTS_QUERY = gql`
+  query {
+    getAllDepartments {
+      id
+      name
+      courses {
+        id
+        name
+      }
+    }
+  }
+`
+
 // mutations
 const REGISTER_TEST_MUTATION = gql`
-  mutation CreateTest($description: String!) {
-    createTest(input: { description: $description }) {
+  mutation CreateTest($input: CreateTestDto!) {
+    createTest(input: $input) {
       id
     }
   }
@@ -184,10 +238,22 @@ const UPDATE_ITEM_QUESTION_MUTATION = gql`
   }
 `
 
-// getAllCourses
-const { result, loading: loadingCourses } = useQuery<{
-  getAllCourses: Array<Course>
-}>(GET_COURSES_QUERY)
+// getAllDepartments
+const {
+  result: getDepartmentsResult,
+  loading: getDepartmentsLoading,
+  onResult: getDepartmentsOnResult,
+} = useQuery<GetDepartmentsQueryResult>(GET_DEPARTMENTS_QUERY)
+
+getDepartmentsOnResult(() => {
+  if (!getDepartmentsResult.value?.getAllDepartments) return
+
+  departments.value = getDepartmentsResult.value?.getAllDepartments.map((department) => ({
+    id: department.id,
+    name: department.name,
+    courses: [ ...department.courses ],
+  }))
+})
 
 // getTestByid
 const {
@@ -203,6 +269,7 @@ onResult(() => {
 
   test.value = {
     id: getTestResult.value?.getTestById.id,
+    department: getTestResult.value?.getTestById.department,
     description: getTestResult.value?.getTestById.description,
     questions: [
       // eslint-disable-next-line no-unsafe-optional-chaining
@@ -240,11 +307,15 @@ const { mutate: updateQuestionMutation } = useMutation(UPDATE_QUESTION_MUTATION)
 // updateItemQuestionMutation
 const { mutate: updateItemQuestionMutation } = useMutation(UPDATE_ITEM_QUESTION_MUTATION)
 
-const courseOptions = computed(() => result.value?.getAllCourses || [])
+const courseOptions = computed(() => !test.value.department.id ? [] : test.value.department.courses)
 
-// current test
 const test = ref<Test>({
   id: null,
+  department: {
+    id: null,
+    name: '',
+    courses: [],
+  },
   description: '',
   questions: [
     {
@@ -256,48 +327,62 @@ const test = ref<Test>({
 })
 
 const saveTest = async () => {
-  if (test.value.description.length < 3) {
-    return toast.error('A descrição do teste deve ter no mínimo 3 caracteres.', {
+  try {
+    saving.value = true
+
+    if (test.value.description.length < 3) {
+      return toast.error('A descrição do teste deve ter no mínimo 3 caracteres.', {
+        position: POSITION.BOTTOM_RIGHT
+      })
+    }
+
+    if (test.value.questions.some((question) => question.description.length < 3)) {
+      return toast.error('A descrição das perguntas deve ter no mínimo 3 caracteres.', {
+        position: POSITION.BOTTOM_RIGHT
+      })
+    }
+
+    if (
+      test.value.questions.some((question) =>
+        question.questionItems.some((item) => item.description.length < 3)
+      )
+    ) {
+      return toast.error('A descrição dos items deve ter no mínimo 3 caracteres.', {
+        position: POSITION.BOTTOM_RIGHT
+      })
+    }
+
+    if (
+      test.value.questions.some((question) =>
+        question.questionItems.some((item) => item.courseId === null)
+      )
+    ) {
+      return toast.error('Todo item deve estar vinculado a um curso.', {
+        position: POSITION.BOTTOM_RIGHT
+      })
+    }
+
+    toast.info('Salvando informações do teste...', {
       position: POSITION.BOTTOM_RIGHT
     })
-  }
 
-  if (test.value.questions.some((question) => question.description.length < 3)) {
-    return toast.error('A descrição das perguntas deve ter no mínimo 3 caracteres.', {
+    isEdit ? updateTest() : createTest()
+  } catch (err) {
+    console.error(err)
+    toast.error('Erro ao salvar teste. Tente novamente mais tarde.', {
       position: POSITION.BOTTOM_RIGHT
     })
+  } finally {
+    saving.value = false
   }
-
-  if (
-    test.value.questions.some((question) =>
-      question.questionItems.some((item) => item.description.length < 3)
-    )
-  ) {
-    return toast.error('A descrição dos items deve ter no mínimo 3 caracteres.', {
-      position: POSITION.BOTTOM_RIGHT
-    })
-  }
-
-  if (
-    test.value.questions.some((question) =>
-      question.questionItems.some((item) => item.courseId === null)
-    )
-  ) {
-    return toast.error('Todo item deve estar vinculado a um curso.', {
-      position: POSITION.BOTTOM_RIGHT
-    })
-  }
-
-  toast.info('Salvando informações do teste...', {
-    position: POSITION.BOTTOM_RIGHT
-  })
-
-  isEdit ? updateTest() : createTest()
 }
 
 const createTest = async () => {
   const resultCreateTest = await createTestMutate({
-    description: test.value.description
+    input: {
+      description: test.value.description,
+      departmentId: test.value.department.id,
+    }
   })
 
   if (!resultCreateTest?.data || resultCreateTest?.errors) {
@@ -358,7 +443,8 @@ const updateTest = async () => {
   const resultUpdateTest = await updateTestMutation({
     id: test.value.id,
     input: {
-      description: test.value.description
+      description: test.value.description,
+      departmentId: test.value.department.id,
     }
   })
 
@@ -447,11 +533,11 @@ const updateTest = async () => {
     }
   }
 
-  toast.success('Teste cadastrado! Redirecionando para a listagem de testes.', {
+  toast.success('Teste atualizado! Redirecionando para a listagem de testes.', {
     position: POSITION.BOTTOM_RIGHT
   })
 
-  setTimeout(() => router.replace('/admin/tests'), 2000)
+  setTimeout(() => router.replace('/admin/tests'), 1000)
 }
 
 const addQuestion = (): void => {

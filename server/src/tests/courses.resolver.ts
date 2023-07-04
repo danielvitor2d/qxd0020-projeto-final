@@ -35,4 +35,9 @@ export class CoursesResolver {
   async getAllCourses() {
     return this.testsService.getAllCourses();
   }
+
+  @Query(() => [Course])
+  async getAllCoursesByDepartment(@Args('department') department: string) {
+    return this.testsService.getAllCoursesByDepartment(department);
+  }
 }

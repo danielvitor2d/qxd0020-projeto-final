@@ -31,7 +31,9 @@ export class TestsService {
   }
 
   async createCourse(createCourseDto: CreateCourseDto): Promise<Course> {
-    return this.prisma.course.create({ data: createCourseDto });
+    return this.prisma.course.create({
+      data: createCourseDto,
+    });
   }
 
   async createTest(createTestDto: CreateTestDto): Promise<Test> {
@@ -232,6 +234,15 @@ export class TestsService {
     });
   }
 
+  async getAllCoursesByDepartment(department: string): Promise<Course[]> {
+    return this.prisma.course.findMany({
+      where: {
+        departmentId: department,
+      },
+      include: { questionItems: true, department: true },
+    });
+  }
+
   async getDepartmentById(id: string): Promise<Department | null> {
     return this.prisma.department.findUnique({
       where: { id },
@@ -256,6 +267,9 @@ export class TestsService {
         questions: {
           include: { questionItems: { include: { course: true } } },
         },
+        department: {
+          include: { courses: true },
+        },
       },
     });
   }
@@ -267,6 +281,9 @@ export class TestsService {
           include: {
             questionItems: { include: { course: true } },
           },
+        },
+        department: {
+          include: { courses: true },
         },
       },
     });

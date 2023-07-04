@@ -7,7 +7,6 @@
         <div class="flex flex-col items-center space-y-2">
           <!-- <img class="w-32 h-32 rounded-full object-cover" :src="`https://cataas.com/cat`" :alt="course.name" /> -->
           <div class="text-white text-2xl">{{ courseName }}</div>
-          <div class="text-white text-2xl">{{ university }}</div>
         </div>
         
         <div class="text-white text-lg">{{ percentageValue }}</div>
@@ -50,7 +49,6 @@ import { getCoursesAndPercentages } from '@/utils/getCoursesAndPercentages';
       itemQuestion: {
         course: {
           name: string
-          university: string
         }
       }
     }>
@@ -87,7 +85,6 @@ import { getCoursesAndPercentages } from '@/utils/getCoursesAndPercentages';
     createdAt: new Date(Number(createdAt)).toISOString()
   })
 
-  const university = ref('')
   const courseName = ref('')
   const numQuestions = ref(0)
   const numQuestionsCourse = ref(0)
@@ -105,11 +102,5 @@ import { getCoursesAndPercentages } from '@/utils/getCoursesAndPercentages';
 
     numQuestions.value = userResponse.responses.length
     numQuestionsCourse.value = userResponse.responses.reduce((prev: number, curr) => prev + (curr.itemQuestion.course.name === course ? 1 : 0), 0)
-
-    userResponse.responses.forEach(response => {
-      if (response.itemQuestion.course.name === course) {
-        university.value = response.itemQuestion.course.university
-      }
-    })
   })
 </script>

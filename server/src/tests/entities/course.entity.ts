@@ -11,9 +11,6 @@ export class Course {
   @Field()
   name: string;
 
-  @Field()
-  university: string;
-
   @Field(() => Department)
   department: Department;
 

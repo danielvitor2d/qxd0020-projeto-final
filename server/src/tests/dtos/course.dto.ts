@@ -4,13 +4,9 @@ import { IsNotEmpty, IsString } from 'class-validator';
 @InputType()
 export class CreateCourseDto {
   @Field()
-  @IsString()
-  name: string;
-
-  @Field()
   @IsNotEmpty()
   @IsString()
-  university: string;
+  name: string;
 
   @Field()
   @IsNotEmpty()
@@ -24,11 +20,6 @@ export class UpdateCourseDto {
   @IsNotEmpty()
   @IsString()
   name: string;
-
-  @Field()
-  @IsNotEmpty()
-  @IsString()
-  university: string;
 
   @Field()
   @IsNotEmpty()

@@ -6,9 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider          = "postgresql"
-  url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -30,12 +29,12 @@ model Department {
   name String
 
   courses Course[]
+  Test    Test[]
 }
 
 model Course {
-  id         String @id @default(uuid())
-  name       String
-  university String
+  id   String @id @default(uuid())
+  name String
 
   department   Department @relation(fields: [departmentId], references: [id])
   departmentId String
@@ -44,10 +43,12 @@ model Course {
 }
 
 model Test {
-  id          String @id @default(uuid())
+  id          String     @id @default(uuid())
   description String
+  questions   Question[]
 
-  questions Question[]
+  department   Department @relation(fields: [departmentId], references: [id])
+  departmentId String
 
   userResponseTest UserResponseTest[]
 }

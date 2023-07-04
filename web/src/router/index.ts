@@ -95,6 +95,11 @@ const router = createRouter({
           component: () => import('@/views/SaveDepartmentView.vue')
         },
         {
+          path: 'department/:id/edit',
+          name: 'EditDepartmentPage',
+          component: () => import('@/views/SaveDepartmentView.vue')
+        },
+        {
           path: 'tests',
           name: 'AdminTestsPage',
           component: () => import('@/views/AdminTestsView.vue')
