@@ -11,7 +11,7 @@
               v-for="(question, index) in questions"
               :key="index"
               :class="`px-4 py-2 cursor-pointer ${
-                activeQuestionIndex === index ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'
+                activeQuestionIndex === index ? 'bg-blue-500 text-white' : !question.answered ? 'bg-gray-300' :'bg-green-500 text-white'
               } rounded-t-lg mr-2 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white`"
               @click="setActiveQuestion(index)"
             >
@@ -45,7 +45,18 @@
             </div>
           </Transition>
         </div>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" @click="finishTest">
+        <button
+          v-if="!isLastQuestion"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+          @click="handleNext"
+        >
+          Próximo
+        </button>
+        <button
+          v-else
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+          @click="finishTest"
+        >
           Finalizar teste
         </button>
       </div>
@@ -84,6 +95,7 @@ interface Question {
   description: string
   questionItems: Item[]
   selectedOption: Item | null
+  answered: boolean // Nova propriedade
 }
 
 interface Test {
@@ -147,7 +159,7 @@ const questions = ref<Array<Question>>([])
 onResult(() => {
   if (result.value) {
     questions.value = result.value?.getTestById.questions?.map(question => {
-      return ({ ...question, selectedOption: null })
+      return ({ ...question, selectedOption: null, answered: false }) // Atualiza para definir 'answered' como false para todas as perguntas
     })
   } else {
     questions.value = []
@@ -164,6 +176,7 @@ function setActiveQuestion(index: number) {
 
 function handleSelectItem(option: Item) {
   questions.value[activeQuestionIndex.value].selectedOption = option
+  questions.value[activeQuestionIndex.value].answered = true // Marca a pergunta como respondida
 }
 
 function checkAnswers() {
@@ -194,8 +207,8 @@ async function finishTest() {
     })
   }
 
-  toast.info('Salvando informações da resposta...', {
-    position: POSITION.BOTTOM_RIGHT,
+  toast.info('Salvando informações da prova...', {
+    position: POSITION.BOTTOM_RIGHT
   })
 
   const saveResponseUserTestResult = await mutate({
@@ -222,6 +235,14 @@ async function finishTest() {
 
   setTimeout(() => router.push(`/result/${userIdEncoded}/${testIdEncoded}/${createdAt}`), 1000)
 }
+
+function handleNext() {
+  if (activeQuestionIndex.value < questions.value.length - 1) {
+    activeQuestionIndex.value++
+  }
+}
+
+const isLastQuestion = computed(() => activeQuestionIndex.value === questions.value.length - 1)
 
 </script>
 
