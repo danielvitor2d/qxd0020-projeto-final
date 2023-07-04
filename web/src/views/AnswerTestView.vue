@@ -14,6 +14,9 @@
                 activeQuestionIndex === index ? 'bg-blue-500 text-white' : !question.answered ? 'bg-gray-300' :'bg-green-500 text-white'
               } rounded-t-lg mr-2 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white`"
               @click="setActiveQuestion(index)"
+              @keydown.arrow-down="handleArrowDown(index)"
+              @keydown.arrow-up="handleArrowUp(index)"
+              tabindex="0"
             >
               {{ index + 1 }}
             </div>
@@ -75,6 +78,18 @@ import ErrorPage from '@/components/ErrorPage.vue';
 import LoadingComponent from '@/components/LoadingComponent.vue';
 import router from '@/router';
 import { useAuthStore } from '@/stores/authStore';
+
+const activeIndex = ref(0);
+
+function handleArrowDown(this: any, index: number) {
+  activeIndex.value = (index + 1) % questions.value.length;
+  (this.$refs.activeItem as HTMLElement).focus(); // Manter o elemento focado após a navegação
+}
+
+function handleArrowUp(this: any, index: number) {
+  activeIndex.value = (index - 1 + questions.value.length) % questions.value.length;
+  (this.$refs.activeItem as HTMLElement).focus(); // Manter o elemento focado após a navegação
+}
 
 interface Course {
   name: string

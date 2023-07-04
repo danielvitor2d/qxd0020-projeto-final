@@ -1,9 +1,20 @@
 <script setup lang="ts"></script>
 
 <template>
-  <main class="pb-16 flex flex-col items-center">
+  <main class="pb-16 flex flex-col items-center gap-5">
     <div class="w-full">
       <img class="w-full" src="../assets/courses.svg" alt="background" />
+    </div>
+
+    <div class="w-full flex flex-row gap-2 items-center justify-center">
+      <nav class="flex gap-2">
+        <a href="#engenharia_de_software" class="text-white bg-blue-600 rounded-md px-4 py-2 transition-colors hover:bg-blue-700">Engenharia de Software</a>
+        <a href="#engenharia_de_computacao" class="text-white bg-green-600 rounded-md px-4 py-2 transition-colors hover:bg-green-700">Engenharia de Computação</a>
+        <a href="#design_digital" class="text-white bg-purple-600 rounded-md px-4 py-2 transition-colors hover:bg-purple-700">Design Digital</a>
+        <a href="#ciencia_da_computacao" class="text-white bg-yellow-600 rounded-md px-4 py-2 transition-colors hover:bg-yellow-700">Ciência da Computação</a>
+        <a href="#sistemas_de_informacao" class="text-white bg-red-600 rounded-md px-4 py-2 transition-colors hover:bg-red-700">Sistemas de Informação</a>
+        <a href="#redes_de_computadores" class="text-white bg-indigo-600 rounded-md px-4 py-2 transition-colors hover:bg-indigo-700">Redes de Computadores</a>
+      </nav>
     </div>
 
     <section class="animate-fadeIn w-9/12 mt-6 flex flex-col items-start justify-center">
@@ -11,7 +22,7 @@
         <h1 class="font-bold text-3xl text-gray-800">Cursos do Campus de Quixadá</h1>
       </header>
 
-      <article>
+      <article id="engenharia_de_software">
         <hgroup>
           <h2 class="mt-5 font-bold text-xl text-gray-800">Engenharia de Software</h2>
         </hgroup>
@@ -23,7 +34,7 @@
         </p>
       </article>
 
-      <article>
+      <article id="engenharia_de_computacao">
         <hgroup>
           <h2 class="mt-5 font-bold text-xl text-gray-800">Engenharia de Computação</h2>
         </hgroup>
@@ -35,7 +46,7 @@
         </p>
       </article>
 
-      <article>
+      <article id="design_digital">
         <hgroup>
           <h2 class="mt-5 font-bold text-xl text-gray-800">Design Digital</h2>
         </hgroup>
@@ -51,7 +62,7 @@
         </p>
       </article>
 
-      <article>
+      <article id="ciencia_da_computacao">
         <hgroup>
           <h2 class="mt-5 font-bold text-xl text-gray-800">Ciência da Computação</h2>
         </hgroup>
@@ -65,7 +76,7 @@
         </p>
       </article>
 
-      <article>
+      <article id="sistemas_de_informacao">
         <hgroup>
           <h2 class="mt-5 font-bold text-xl text-gray-800">Sistemas de Informação</h2>
         </hgroup>
@@ -77,7 +88,7 @@
         </p>
       </article>
 
-      <article>
+      <article id="redes_de_computadores">
         <hgroup>
           <h2 class="mt-5 font-bold text-xl text-gray-800">Redes de Computadores</h2>
         </hgroup>
